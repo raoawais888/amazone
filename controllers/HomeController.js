@@ -1,37 +1,26 @@
-
 class HomeController {
+  static index = async (req, res) => {
+    res.render("frontend/pages/home");
+  };
 
-     static index = async (req,res)=>{
+  static about = async (req, res) => {
+    res.render("frontend/pages/about");
+  };
 
-    res.render('frontend/pages/home');
+  static product = async (req, res) => {
+    res.render("frontend/pages/product");
+  };
 
-     }
+  static why = async (req, res) => {
+    res.render("frontend/pages/why");
+  };
 
-     static about = async (req,res)=>{
-
-    res.render('frontend/pages/about');
-
-     }
-
-     static product = async (req,res)=>{
-
-        res.render('frontend/pages/product');
-    
-         }
-
-     static why = async (req,res)=>{
-
-        res.render('frontend/pages/why');
-    
-         }
-
-     static  testimonial = async (req,res)=>{
-
-        res.render('frontend/pages/testimonial');
-    
-         }
-
-
+  static testimonial = async (req, res) => {
+    res.render("frontend/pages/testimonial");
+  };
+  static dashboard = async (req, res) => {
+    await res.render("frontend/pages/dashboard");
+  };
 }
 
-export default HomeController
+export default HomeController;
