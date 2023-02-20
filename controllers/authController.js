@@ -11,8 +11,6 @@ class authController {
   };
   static store = async (req, res) => {
     try {
-      console.log(req.body);
-      // return false;
       const { name, email, user_type, pass, cpass } = req.body;
       const exist_email = await userModel.findOne({ email: email });
       if (!name || !email || !user_type || !pass) {
@@ -67,15 +65,19 @@ class authController {
         res.redirect("/login");
       } else {
         const result = await userModel.findOne({ email: email });
-        //   console.log(result);
-        //   return false;
         if (result != null) {
           const isMatch = await bcrypt.compare(pass, result.password);
           if (isMatch) {
             req.session.user = result;
+            if(result.userType == 1)
+            {
+              res.redirect("/admin");
+            }else{
+                res.redirect("/dashboard");
+            }
               // res.locals.user = req.session.user;
               // console.log(res.locals.user)
-            res.redirect("/dashboard");
+            
           } else {
             req.flash("fail", "Email or Password is incorrecet!!");
             res.redirect("/login");
