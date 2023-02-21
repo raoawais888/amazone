@@ -4,8 +4,10 @@ import fs from 'fs'
 class productController {
     static allProduct = async (req,res) => {
         try {
-            const Products = await productModel.find({}).populate('category');
-            res.render("backend/pages/products/products",{products:Products});
+
+            const Products = await productModel.find().populate('category');
+            res.render("backend/pages/products/products",{products:Products})
+
         } catch (error) {
             console.log("Error",error)
         }
