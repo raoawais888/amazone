@@ -1,4 +1,5 @@
 import categoryModel from "../../models/categoryModel.js";
+import fs from 'fs'
 class categoryController {
     static allCategory = async (req,res) => {
         try {
@@ -24,8 +25,6 @@ class categoryController {
                 } else {
                   imgName = req.file.filename;
             }
-            // console.log(imgName)
-            // return false;
                      if (!req.body.categoryName) {
                        req.flash("fail", "Please Enter Name!");
                        res.redirect("/add-category");
@@ -36,7 +35,7 @@ class categoryController {
                        });
                        await catDoc.save();
                        req.flash("success", "Category Added Successfully!");
-                       res.redirect("/add-category");
+                       res.redirect("/category");
                      }
         } catch (error) {
             console.log("Error",error)
@@ -44,21 +43,67 @@ class categoryController {
     }
     static editCategory = async (req,res) => {
         try {
-            res.render("backend/pages/categories/editCategory");
+            const cate = await categoryModel.findById({_id:req.params.id})
+            console.log(cate)
+            res.render("backend/pages/categories/editCategory",{category:cate});
         } catch (error) {
             console.log("Error",error)
         }
     }
     static updateCategory = async (req,res) => {
         try {
-            
+                const {cat_id,categoryName,old_image} = req.body
+                var updated_image = old_image
+                if(req.file){
+                        updated_image = req.file.filename
+                      await fs.unlink(`public/uploads/${old_image}`,(error)=>{
+                    if(error){
+                        console.log(error);
+                    }else{
+                        console.log("deleted");
+                    }
+                })
+                }
+                  const updated_cat = await  categoryModel.findByIdAndUpdate(cat_id,{
+                        name:categoryName,
+                        image:  updated_image,
+                    });
+                    if(updated_cat)
+                    {
+                        req.flash('success', 'Category Updated Succefully!!')
+                        res.redirect('/category')
+                    }
+                    else{
+                         req.flash('fail', 'Something went wrong! Please try again!')
+                        res.redirect('/category')
+                    }
         } catch (error) {
             console.log("Error",error)
         }
     }
     static deleteCategory = async (req,res) => {
         try {
-            
+            const cId = req.params.id;
+            const category = await categoryModel.findById({_id:cId})
+                  if(category.image){        
+                    await fs.unlink(`public/uploads/${category.image}`,(error)=>{
+                    if(error){
+                        console.log(error);
+                    }else{
+                        console.log("deleted");
+                    }
+                })
+            }
+          const deleted = await categoryModel.findByIdAndDelete({_id:cId});
+          if(deleted)
+          {
+            req.flash("success","Category Deleted Successfully!")
+            res.redirect("/category");
+          }
+          else{
+            req.flash("fail","Something went wrong! Please try again")
+            res.redirect("/category");
+          }
         } catch (error) {
             console.log("Error",error)
         }

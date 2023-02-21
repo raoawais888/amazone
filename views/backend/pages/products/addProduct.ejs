@@ -1,5 +1,5 @@
-<%- include("../../partials/header.ejs") %> <%- include("../../partials/sidebar.ejs")
-%>
+<%- include("../../partials/header.ejs") %> <%-
+include("../../partials/sidebar.ejs") %>
 <div class="main-content">
   <section class="section">
     <div class="section-body">
@@ -7,80 +7,105 @@
         <div class="col-12 col-md-12 col-lg-12">
           <div class="card">
             <div class="card-header">
-              <h4>Add Category</h4>
+              <h4>Add Product</h4>
             </div>
+            <% if(message.success){ %>
+            <div class="alert alert-success"><%= message.success %></div>
+            <% }else if(message.fail) { %>
+            <div class="alert alert-danger"><%= message.fail %></div>
+            <% } %>
             <div class="card-body">
-              <div class="form-group">
-                <label>Default Input Text</label>
-                <input type="text" class="form-control" />
-              </div>
-              <div class="form-group">
-                <label>Phone Number (US Format)</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <i class="fas fa-phone"></i>
+              <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label>Product Name</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-list-alt"></i>
+                      </div>
                     </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="pname"
+                    />
                   </div>
-                  <input type="text" class="form-control phone-number" />
                 </div>
-              </div>
-              <div class="form-group">
-                <label>Password Strength</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <i class="fas fa-lock"></i>
+                <div class="form-group">
+                  <label>Product Price</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-list-alt"></i>
+                      </div>
                     </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="pprice"
+                    />
                   </div>
-                  <input
-                    type="password"
-                    class="form-control pwstrength"
-                    data-indicator="pwindicator"
-                  />
                 </div>
-                <div id="pwindicator" class="pwindicator">
-                  <div class="bar"></div>
-                  <div class="label"></div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Currency</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">$</div>
+                <div class="form-group">
+                  <label>Stock</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-list-alt"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="qty"
+                    />
                   </div>
-                  <input type="text" class="form-control currency" />
                 </div>
-              </div>
-              <div class="form-group">
-                <label>Purchase Code</label>
-                <input
-                  type="text"
-                  class="form-control purchase-code"
-                  placeholder="ASDF-GHIJ-KLMN-OPQR"
-                />
-              </div>
-              <div class="form-group">
-                <label>Invoice</label>
-                <input type="text" class="form-control invoice-input" />
-              </div>
-              <div class="form-group">
-                <label>Date</label>
-                <input
-                  type="text"
-                  class="form-control datemask"
-                  placeholder="YYYY/MM/DD"
-                />
-              </div>
-              <div class="form-group">
-                <label>Credit Card</label>
-                <input type="text" class="form-control creditcard" />
-              </div>
-              <div class="form-group">
-                <label>Tags</label>
-                <input type="text" class="form-control inputtags" />
-              </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-list-alt"></i>
+                      </div>
+                    </div>
+                   <select name="p_cat" id="p_cat" class="form-control">
+                    <% category.forEach(category => { %>
+                      <option value="<%= category._id%>"><%= category.name %></option>
+                    <% }) %>
+                    
+                   </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Product Image</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-image"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="productImg"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Product Description</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fa fa-image"></i>
+                      </div>
+                    </div>
+                    <textarea name="pdesc" id="" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+              </form>
             </div>
           </div>
         </div>
