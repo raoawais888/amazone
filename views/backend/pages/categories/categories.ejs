@@ -1,5 +1,18 @@
 <%- include("../../partials/header.ejs") %> <%-
 include("../../partials/sidebar.ejs") %>
+
+<style>
+  .categorie-left,
+  .add-new-right {
+    width: 50%;
+    float: left;
+  }
+  .add-new-right,
+  .add-new-right a {
+    float: right;
+  }
+</style>
+
 <div class="main-content">
   <section class="section">
     <div class="section-body">
@@ -7,7 +20,12 @@ include("../../partials/sidebar.ejs") %>
         <div class="col-12 col-md-12 col-lg-12">
           <div class="card">
             <div class="card-header">
-              <h4>Categories</h4>
+              <div class="categorie-left"><h4>Categories</h4></div>
+              <div class="add-new-right">
+                <a href="/add-category" class="btn btn-primary m-auto"
+                  >Add New</a
+                >
+              </div>
             </div>
             <div class="card-body p-0">
               <div class="table-responsive">
@@ -15,19 +33,28 @@ include("../../partials/sidebar.ejs") %>
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Created At</th>
-                    <th>Status</th>
+                    <th>Image</th>
                     <th>Action</th>
                   </tr>
+                  <% var key = 1; %> <% categories.forEach(category =>{ %>
                   <tr>
-                    <td>1</td>
-                    <td>Irwansyah Saputra</td>
-                    <td>2017-01-09</td>
+                    <td><%= key %></td>
+                    <td><%= category.name %></td>
                     <td>
-                      <div class="badge badge-success">Active</div>
+                      <img
+                        src="uploads/<%= category.image %>"
+                        height="40px"
+                        width="40px"
+                        alt=""
+                      />
                     </td>
-                    <td><a href="#" class="btn btn-primary">Detail</a></td>
+
+                    <td>
+                      <a href="#" class="btn btn-primary">Edit</a>
+                      <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
                   </tr>
+                  <% key++ }) %>
                 </table>
               </div>
             </div>
