@@ -13,5 +13,17 @@ const isLogin = (req, res, next) => {
         res.redirect("/dashboard");
     }
 };
+const isAdmin = (req,res,next) => {
+  const user = req.session.user
+    if(user.userType == 1)
+    {
+      next();
+    }else if(user.userType == 2){
+      res.redirect('/dashboard')
+    }
+    else{
+      res.redirect('/')
+    }
+}
 
-export { checkLogin, isLogin };
+export { checkLogin, isLogin,isAdmin };
