@@ -17,9 +17,10 @@ class HomeController {
   };
 
   static product_detail = async (req, res) => {
-     
+     const id = req.params.id;
+     const detail = await productModel.findById({_id:id})
    
-    res.render("frontend/pages/product_detail");
+    res.render("frontend/pages/product_detail",{detail:detail});
   };
 
   static why = async (req, res) => {
