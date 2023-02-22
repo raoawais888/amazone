@@ -75,10 +75,41 @@ class vendorProductController {
     }
     static updateProduct = async (req,res) => {
         try {
-            
-        } catch (error) {
-            console.log("Error",error)
-        }
+            const {pid,pname,qty,p_cat,old_image,pprice,pdesc} = req.body
+              var updated_image = old_image;
+         
+              if(req.file)
+              {
+                  updated_image = req.file.filename
+                    await fs.unlink(`public/uploads/${old_image}`,(error)=>{
+                  if(error){
+                      console.log(error);
+                  }else{
+                      console.log("deleted");
+                  }
+              })
+              }
+                  
+                  const all_Products = await productModel.findByIdAndUpdate(pid,{
+                      name:pname,
+                      stock:qty,
+                      price:pprice,
+                      category:p_cat,
+                      image:  updated_image,
+                      desc:pdesc
+                  });
+                  if(all_Products)
+                  {
+                      req.flash('success', 'Product Updated Succefully!!')
+                      res.redirect('/vendor/products')
+                  }
+                     else{
+                      req.flash('fail','Something went Wrong Please Try Again!!')
+                      res.redirect('/products')
+                  }
+      } catch (error) {
+          console.log("Error",error)
+      }
     }
     static deleteProduct = async (req,res) => {
         try {
@@ -101,7 +132,7 @@ class vendorProductController {
                     }
                     else{
                         req.flash('fail','Something went Wrong Please Try Again!!')
-                        res.redirect('/products')
+                        res.redirect('/vendor/products')
                     }
         } catch (error) {
             console.log("Error",error)
