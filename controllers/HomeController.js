@@ -16,6 +16,12 @@ class HomeController {
     res.render("frontend/pages/product",{product});
   };
 
+  static product_detail = async (req, res) => {
+     
+   
+    res.render("frontend/pages/product_detail");
+  };
+
   static why = async (req, res) => {
     res.render("frontend/pages/why");
   };
@@ -24,7 +30,7 @@ class HomeController {
     res.render("frontend/pages/testimonial");
   };
   static dashboard = async (req, res) => {
-    await res.render("frontend/pages/dashboard");
+    await res.render("vendor/pages/dashboard");
   };
 }
 
