@@ -84,7 +84,7 @@ include("../../partials/sidebar.ejs") %>
                     </div>
                     <select name="p_cat" id="p_cat" class="form-control">
                       <% category.forEach(category => { %> <%
-                      if(product.category == category._id) { %>
+                      if(category.name == product.category.name) { %>
                       <option value="<%= category._id%>" selected ><%= category.name %></option>
                       <% } else {%>
                       <option value="<%= category._id%>"><%= category.name %></option>
