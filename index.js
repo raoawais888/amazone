@@ -2,6 +2,7 @@ import env from "dotenv";
 env.config();
 import express from "express";
 import web from "./routes/web.js";
+import admin from "./routes/admin.js";
 import path from "path";
 import CONNECT_DB from "./db/connection.js";
 import flash from "connect-flash";
@@ -35,6 +36,8 @@ app.use((req, res, next) => {
 });
 app.use(express.urlencoded({extended:true}));
 app.use("/", web);
+
+app.use("/admin", admin);
 
 app.set("view engine", "ejs");
 

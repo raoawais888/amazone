@@ -1,3 +1,6 @@
+
+import productModel from "../models/productModel.js";
+
 class HomeController {
   static index = async (req, res) => {
     res.render("frontend/pages/home");
@@ -8,7 +11,15 @@ class HomeController {
   };
 
   static product = async (req, res) => {
-    res.render("frontend/pages/product");
+     
+    const product = await productModel.find();
+    res.render("frontend/pages/product",{product});
+  };
+
+  static product_detail = async (req, res) => {
+     
+   
+    res.render("frontend/pages/product_detail");
   };
 
   static why = async (req, res) => {
@@ -19,7 +30,7 @@ class HomeController {
     res.render("frontend/pages/testimonial");
   };
   static dashboard = async (req, res) => {
-    await res.render("frontend/pages/dashboard");
+    await res.render("vendor/pages/dashboard");
   };
 }
 
