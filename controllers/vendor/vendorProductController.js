@@ -3,8 +3,11 @@ import categoryModel from "../../models/categoryModel.js";
 class vendorProductController {
     static allProduct = async (req,res) => {
         try {
-            const Products = await productModel.find().populate('category');
-            res.render("backend/pages/products/products",{products:Products})
+           
+            const user =  req.session.user
+              const user_id = user._id;
+            const Products = await productModel.find({user:user_id}).populate('category');
+            res.render("vendor/pages/products/products",{products:Products})
         } catch (error) {
             console.log("Error",error)
         }
@@ -12,18 +15,22 @@ class vendorProductController {
     static addProduct = async (req,res) => {
         try {
             const category= await categoryModel.find({})
-            res.render("backend/pages/products/addProduct",{category:category})
+            res.render("vendor/pages/products/addProduct",{category:category})
         } catch (error) {
             console.log("Error",error)
         }
     }
     static storeProduct = async (req,res) => {
         try {
+            const user =  req.session.user
+              const user_id = user._id;
+                
+
             const {pname,pprice,qty,pdesc,p_cat} = req.body
                var img = req.file
                 if(!img){
                     req.flash('fail','Please upload Image!')
-                    res.redirect('/addproduct')
+                    res.redirect('/vendor/addproduct')
                 }
                 else{
                     img = req.file.filename
@@ -32,7 +39,7 @@ class vendorProductController {
                 if(!pname || !pprice || !p_cat || !qty )
                 {
                     req.flash('fail','Please Fill All Fields!')
-                    res.redirect('/addproduct')
+                    res.redirect('/vendor/addproduct')
                 }
                 else
                 {
@@ -42,12 +49,13 @@ class vendorProductController {
                         category:p_cat,
                         stock:qty,
                         image:img,
-                        desc:pdesc
+                        desc:pdesc,
+                        user:user_id
 
                     })
                     await ProductDoc.save()
                     req.flash('success','Product Added Successfully!')
-                    res.redirect('/products')
+                    res.redirect('/vendor/products')
                 }
         } catch (error) {
             console.log("Error",error)
@@ -56,8 +64,11 @@ class vendorProductController {
     static editProduct = async (req,res) => {
         try {
             const id = req.params.id
+           
             const product = await productModel.findById({_id:id})
-            res.render("backend/pages/products/editProduct",{product:product})
+            const category = await categoryModel.find({})
+            console.log(product);
+            res.render("vendor/pages/products/editProducts",{product:product,category:category})
         } catch (error) {
             console.log("Error",error)
         }
@@ -86,7 +97,7 @@ class vendorProductController {
                     if(product_delete)
                     {
                         req.flash('success','Product Deleted Successfully!!')
-                        res.redirect('/products')
+                        res.redirect('/vendor/products')
                     }
                     else{
                         req.flash('fail','Something went Wrong Please Try Again!!')

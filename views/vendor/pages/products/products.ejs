@@ -13,7 +13,7 @@ include("../../partials/sidebar.ejs") %>
             <% } %>
             <div class="card-header">
               <h4>Products</h4>
-              <a href="/add-product" class="btn btn-primary">Add New</a>
+              <a href="/vendor/add-product" class="btn btn-primary">Add New</a>
             </div>
             <div class="card-body p-0">
               <div class="table-responsive">
@@ -37,8 +37,8 @@ include("../../partials/sidebar.ejs") %>
                     <td><%= product.category.name %></td>
                     <td><img src="/uploads/<%= product.image %>" alt="" height="50px" width="50px"></td>
                     <td>
-                      <a href="/edit-product/<%= product._id%>" class="btn btn-primary">Edit</a>
-                      <a href="/delete-product/<%= product._id%>" class="btn btn-danger">Delete</a>
+                      <a href="/vendor/edit-product/<%= product._id%>" class="btn btn-primary">Edit</a>
+                      <a href="/vendor/delete-product/<%= product._id%>" class="btn btn-danger">Delete</a>
                     </td>
                   </tr>
 

@@ -9,21 +9,21 @@ const router = express.Router();
 router.use(adminMiddleware);
 
 //Admin Routes
-router.get("/admin",adminController.dashboard);
+router.get("/",adminController.dashboard);
 //Category Rotes
-router.get("admin/category", categoryController.allCategory);
-router.get("admin/add-category",categoryController.addCategory);
-router.post("admin/add-category", upload.single("categoryImg"),categoryController.storeCategory);
-router.get("admin/edit-category/:id",categoryController.editCategory);
-router.post("admin/edit-category/:id", upload.single("categoryImg"), categoryController.updateCategory);
-router.get("admin/delete-category/:id", categoryController.deleteCategory);
+router.get("/category", categoryController.allCategory);
+router.get("/add-category",categoryController.addCategory);
+router.post("/add-category", upload.single("categoryImg"),categoryController.storeCategory);
+router.get("/edit-category/:id",categoryController.editCategory);
+router.post("/edit-category/:id", upload.single("categoryImg"), categoryController.updateCategory);
+router.get("/delete-category/:id", categoryController.deleteCategory);
 //Products Routes
-router.get("admin/products", productController.allProduct);
-router.get("admin/add-product", productController.addProduct);
-router.post("admin/add-product", upload.single("productImg"),productController.storeProduct);
-router.get("admin/edit-product/:id", productController.editProduct);
-router.post("admin/edit-product/:id", upload.single("productImg"),productController.updateProduct);
-router.get("admin/delete-product/:id",productController.deleteProduct);
+router.get("/products", productController.allProduct);
+router.get("/add-product", productController.addProduct);
+router.post("/add-product", upload.single("productImg"),productController.storeProduct);
+router.get("/edit-product/:id", productController.editProduct);
+router.post("/edit-product/:id", upload.single("productImg"),productController.updateProduct);
+router.get("/delete-product/:id",productController.deleteProduct);
 
 
 export default router;
