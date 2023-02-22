@@ -6,6 +6,7 @@ const ProductSchema = mongoose.Schema({
     price: {type:Number, require:true, trim:true},
     stock: {type:Number, require:true, trim:true},
     category: {type: mongoose.Types.ObjectId, ref: 'productCategory'},
+    user: {type: mongoose.Types.ObjectId, ref: 'user'},
     desc: {type: String},
     created_at: {type:Date, default:Date.now}
 })

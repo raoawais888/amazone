@@ -73,7 +73,7 @@ class authController {
             {
               res.redirect("/admin");
             }else{
-                res.redirect("/dashboard");
+                res.redirect("/vendor");
             }
               // res.locals.user = req.session.user;
               // console.log(res.locals.user)
