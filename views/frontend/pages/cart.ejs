@@ -1,3 +1,105 @@
-<%- include("../partials/header.ejs") %>
 
-<%- include("../partials/footer.ejs") %>
+
+<body class="sub_page">
+
+</style>
+
+    <%- include("../partials/header.ejs") %>
+
+        <!-- end header section -->
+        </div>
+
+
+        <!-- product cart section -->
+        <section class="cart_section">
+
+            
+              
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive-md">
+                            <thead>
+                                <tr class="bg-primary">
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                    <th colspan="2">Actions</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <% cart.forEach(data => { %>
+                               <tr>
+                                   <td>
+                                    <div class="media">
+                                        <a class="thumbnail pull-left mr-2" href="#">
+                                            <img class="media-object" src="/uploads/<%=data.item.image  %>" style="width: 72px; height: 72px;" />
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="#"><%=data.item.name  %></a></h4>
+                                           
+                                           
+                                            <span class="text-success"><strong> </strong></span>
+                                        </div>
+                                    </div>
+                                   </td>
+
+                                   <td>  <input type="email" class="form-control" id="exampleInputEmail1" value="<%= data.qty  %>" /></td>
+                                   <td><strong>$<%=data.item.price %> .00</strong></td>
+                                   <td><strong>$<%=data.item.price * data.qty  %>.00</strong></td>
+                                   <td colspan="2"> <button type="button" class="btn btn-danger"><span class="fa fa-remove"></span> Remove</button>
+                                    <button type="button" onclick="update()"  data-id = "<%= JSON.stringify(data.item._id)%>"  id="update_btn" class="btn btn-success"> Update</button></td>
+                                  
+                               </tr>
+
+                               <% }) %>
+
+                               <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><h3>Total</h3></td>
+                                <td><h3><strong>€ <%= session.cart.totalPrice %> .00</strong></h3></td>
+                               </tr>
+                               <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td> <button type="button" class="btn btn-success">Checkout</span></button></td>
+                               </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+             
+                       
+                       
+                    
+                           
+                          
+
+                     
+                     
+
+                      
+                            
+                </div>
+            </div>
+              
+            
+              
+            
+
+        </section>
+
+
+        <!-- end product detail section -->
+
+
+        <%- include("../partials/footer.ejs") %>

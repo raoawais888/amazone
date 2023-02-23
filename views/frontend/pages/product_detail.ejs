@@ -76,8 +76,8 @@
                             <div class="about"> <span class="font-weight-bold"><%= detail.name %> </span>
                                 <h4 class="font-weight-bold">$<%= detail.price %></h4>
                             </div>
-                            <div class="buttons"> <a href="/add-cart/<%= detail._id %>" class="btn btn-outline-warning btn-long cart">Add to
-                                     Cart</a>
+                            <div class="buttons">  <button  onclick="addTOCart()"  data-product="<%= JSON.stringify(detail) %>" id="add_cart_btn" class="btn btn-outline-warning btn-long cart">Add to
+                                     Cart</button>
                                
                                         <!--<button class="btn btn-warning btn-long buy">Buy it Now</button>
                                 <button class="btn btn-light wishlist"> <i class="fa fa-heart"></i> </button> </div> -->
