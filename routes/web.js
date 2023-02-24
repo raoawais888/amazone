@@ -12,7 +12,9 @@ router.get("/product", HomeController.product);
 router.get("/product-detail/:id", HomeController.product_detail);
 router.get("/why", HomeController.why);
 router.get("/testimonial", HomeController.testimonial);
-router.get("/add-cart/:id", cartController.cart);
+router.get("/cart", cartController.index);
+router.post("/add-cart", cartController.cart);
+router.get("/checkout", cartController.checkout);
 
 router.get("/register", authController.register);
 router.post("/register", authController.store);
