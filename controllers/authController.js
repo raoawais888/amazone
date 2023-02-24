@@ -11,9 +11,9 @@ class authController {
   };
   static store = async (req, res) => {
     try {
-      const { name, email, user_type, pass, cpass } = req.body;
+      const { name, email, pass, cpass } = req.body;
       const exist_email = await userModel.findOne({ email: email });
-      if (!name || !email || !user_type || !pass) {
+      if (!name || !email || !pass) {
         req.flash("fail", "Please Fill all fields!");
         res.redirect("/register");
       } else if (name.length < 3) {
@@ -36,7 +36,6 @@ class authController {
         const userDoc = userModel({
           userName: name,
           email: email,
-          userType: user_type,
           password: hashPassword,
         });
         await userDoc.save();
