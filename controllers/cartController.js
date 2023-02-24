@@ -70,6 +70,44 @@ class cartController {
             
            }
          
+
+
+        //    update qty 
+
+
+        static updateCart = async (req , res)=>{
+
+            try {
+                
+                const qty =  JSON.parse(req.body.qty)
+                const data =  req.body.id;
+                 const id = data._id ;
+                 let cart = req.session.cart;
+                
+                    if(cart.items[id]){
+                        let old_qty =  cart.items[id].qty;
+                        let new_qty = cart.totalQty - old_qty;
+                        let old_price =  cart.items[id].item.price * cart.items[id].qty;
+                        let new_price = qty * cart.items[id].item.price - old_price ;
+
+                        cart.items[id].qty = cart.items[id].qty + qty - cart.items[id].qty;
+                     
+                        let total_qty =  cart.totalQty = cart.totalQty + qty;  
+                    let total_price = cart.totalPrice = cart.totalPrice + new_price
+
+                 res.send({price : total_price, qty: total_qty});
+                    
+                    }
+                 
+               
+          
+                      
+
+            } catch (error) {
+                
+                console.log(error);
+            }
+        }
         
 
 
