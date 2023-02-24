@@ -11,7 +11,7 @@
           <span> Email : demo@gmail.com </span>
         </a>
       </div>
-      <from class="search_form">
+      <form action="/search" method="post" class="search_form">
         <div class="input-group">
  <div class="input-group-btn search-panel">
   <button type="button" class="btn btn-default dropdown-toggle all_btn" data-toggle="dropdown">
@@ -20,23 +20,16 @@
   <ul class="dropdown-menu scrollable-dropdown" role="menu">
     <li><a href="#">Shirt</a></li>
     <li><a href="#">Phone</a></li>
-    <li><a href="#">Tv</a></li>
-    
-    
+    <li><a href="#">Tv</a></li> 
   </ul>
  </div>
  <input type="hidden" name="search_param" value="all" id="search_param">
- <input type="text" class="form-control" name="x" id="search" placeholder="Search">
- 
-   
- 
-        
+ <input type="text" class="form-control" name="x" id="search" placeholder="Search" required>
           <button class="" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-     
+          </button>    
 </div>
-   </from>
+   </form>
       
       <div class="user_option_box">
         <% if(!locals.user){ %>

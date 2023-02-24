@@ -33,6 +33,10 @@ class HomeController {
   static dashboard = async (req, res) => {
     await res.render("vendor/pages/dashboard");
   };
+  static search = async (req,res) => {
+    console.log(req.body);
+    return false;
+  }
 }
 
 export default HomeController;
