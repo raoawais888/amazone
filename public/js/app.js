@@ -47,18 +47,44 @@ let notifier = new AWN();
   // update cart qty code 
 
     
+  const update_cart_btn = document.querySelectorAll("#update_btn");
 
-  const update = ()=>{
-    const update_btn = document.querySelector("#update_btn");
-      update_btn.foreach(ele =>{
+  update_cart_btn.forEach((btn)=>{
+
+     btn.addEventListener("click", (e)=>{
+       e.preventDefault();
+        const id = btn.dataset.id;
+         const qty = btn.closest('tr').querySelector(".form-control").value;
         
-      
+         const s_id = JSON.parse(id);
+           
+          
+        var headers_2 = new Headers();
+        headers_2.append('Accept', 'application/json'); // This one is enough for GET requests
+        headers_2.append('Content-Type', 'application/json'); // This one sends body
+        fetch('/update-cart', {
+            method: 'POST',
+            headers: headers_2,
+            body: JSON.stringify({id:s_id,qty}),
+        }).then(resp => {
+          return resp.json();
+        }).then((json) => {
 
-      })
-    const product_id = update_btn.dataset.id;
-    console.log(product_id)
-      
-  }
+           console.log(json);
+            //  cart_counter.innerText = json.data;
+            //  new AWN().success('Item Added in to cart', {durations: {Added: 0}})
+  
+              
+       }).catch(err => {
+           
+        })
+
+     })
+   
+
+  })
+
+
 
 
 
