@@ -14,6 +14,7 @@ router.get("/why", HomeController.why);
 router.get("/testimonial", HomeController.testimonial);
 router.get("/cart", cartController.index);
 router.post("/add-cart", cartController.cart);
+router.get("/checkout", cartController.checkout);
 
 router.get("/register", authController.register);
 router.post("/register", authController.store);

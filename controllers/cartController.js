@@ -2,11 +2,19 @@ import product from "../models/productModel.js"
 class cartController {
 
      static index = async(req , res) =>{
-            
-              var cart = Object.values(req.session.cart.items);
-            
+        
+        if(!req.session.cart){
+            res.render("frontend/pages/cart");
+          
+        }else{
+           
+            var cart = Object.values(req.session.cart.items);
+            res.render("frontend/pages/cart",{cart})
+        }
+        
 
-             res.render("frontend/pages/cart",{cart})
+       
+           
 
      }
 
@@ -63,6 +71,29 @@ class cartController {
            }
          
         
+
+
+        //    checkout function 
+
+        static checkout = async (req,res)=>{
+
+            try {
+
+                if(!req.session.cart){
+                    res.render("frontend/pages/cart");
+                  
+                }else{
+                   
+                    var cart = Object.values(req.session.cart.items);
+                    await res.render("frontend/pages/checkout",{cart});
+                  
+                }
+               
+            } catch (error) {
+                
+                console.log(error)
+            }
+        }
 
     }
 
