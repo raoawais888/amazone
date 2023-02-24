@@ -1295,6 +1295,30 @@ a:hover{
     border-radius: 10px;
     box-shadow: 2px 0px 10px 6px #00000026;
 }
+.back_shop_btn {
+
+  display: inline-block;
+  padding: 10px 45px;
+  background-color: #f08804;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #f08804;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  margin-top: 15px;
+}
+.back_shop_btn:hover{
+
+  background-color: transparent;
+  color: #f08804;
+  border: 1px solid #f08804;
+}
+.cart_section .alert-success {
+  color: #fff;
+  background-color: #131921;
+  border-color: #131921;
+}
+
 @media(max-width:400px){
     
     .search_form .all_btn {
