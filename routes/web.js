@@ -15,6 +15,7 @@ router.get("/testimonial", HomeController.testimonial);
 router.get("/cart", cartController.index);
 router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
+router.post("/delete_Cart", cartController.deleteCart);
 router.get("/checkout", cartController.checkout);
 
 router.get("/register", authController.register);
