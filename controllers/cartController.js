@@ -89,13 +89,13 @@ class cartController {
                         let new_qty = cart.totalQty - old_qty;
                         let old_price =  cart.items[id].item.price * cart.items[id].qty;
                         let new_price = qty * cart.items[id].item.price - old_price ;
-
+                        let update_price = qty * cart.items[id].item.price;
                         cart.items[id].qty = cart.items[id].qty + qty - cart.items[id].qty;
                      
-                        let total_qty =  cart.totalQty = cart.totalQty + qty;  
-                    let total_price = cart.totalPrice = cart.totalPrice + new_price
+                        let total_qty =  cart.totalQty = new_qty + qty;   
+                        let total_price = cart.totalPrice = cart.totalPrice + new_price
 
-                 res.send({price : total_price, qty: total_qty});
+                    res.send({price : total_price, qty: total_qty , new_price:update_price});
                     
                     }
                  
@@ -121,7 +121,7 @@ class cartController {
                     res.render("frontend/pages/cart");
                   
                 }else{
-                   
+
                     var cart = Object.values(req.session.cart.items);
                     await res.render("frontend/pages/checkout",{cart});
                   
@@ -132,6 +132,47 @@ class cartController {
                 console.log(error)
             }
         }
+
+
+
+    // delete cart 
+
+     static  deleteCart = async (req , res)=>{
+
+
+              
+                
+              try {
+                const data = JSON.parse(req.body.id);
+                const id = data._id;
+              
+                
+            const cart = req.session.cart;
+
+                   if(cart.items[id]){
+
+                    const qty = cart.items[id].qty;
+                    const price =  cart.items[id].item.price * qty;
+                       const total_qty = cart.items.totalQty - qty ;
+                    cart.items
+
+                   }
+            
+            // console.log(cart.items);
+            // delete cart.items[id];
+            //   console.log(cart.items[id])
+            // console.log(cart);   
+                
+          
+ 
+                
+              } catch (error) {
+                console.log(error);
+              }
+
+     }
+
+
 
     }
 
