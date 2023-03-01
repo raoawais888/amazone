@@ -153,15 +153,14 @@ class cartController {
 
                     const qty = cart.items[id].qty;
                     const price =  cart.items[id].item.price * qty;
-                       const total_qty = cart.items.totalQty - qty ;
-                    cart.items
+                    const total_qty = cart.totalQty = cart.totalQty - qty;
+                    const totalPrice =  cart.totalPrice = cart.totalPrice - price;
+                    delete cart.items[id];
+                    res.send({price : totalPrice, qty: total_qty});
 
                    }
             
-            // console.log(cart.items);
-            // delete cart.items[id];
-            //   console.log(cart.items[id])
-            // console.log(cart);   
+             
                 
           
  

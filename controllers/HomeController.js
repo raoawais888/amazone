@@ -3,7 +3,12 @@ import productModel from "../models/productModel.js";
 
 class HomeController {
   static index = async (req, res) => {
-    res.render("frontend/pages/home");
+
+    const product = await productModel.find();
+    const latest_product = await productModel.find().sort('-created_at').limit(10);
+   
+
+    res.render("frontend/pages/home",{product , latest_product});
   };
 
   static about = async (req, res) => {

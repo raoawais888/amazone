@@ -114,276 +114,34 @@
       <div class="owl-carousel owl-theme vertical-divider">
         
       
-        
+        <% latest_product.forEach((data)=>{  %>
+
         <div class="item">
           <a href="#">
           <div class="card">
             <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97 Edge</p>
+              <span class="text-secondary merchant-item">Amazone To Amazone Store</span>
+              <p class="text-primary mb-0 product-title"><%= data.name%></p>
             </div>
             <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
+            <img src="uploads/<%=data.image%>" />
             </div>
             <div class="card-body py-1 row">
               <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
+                <h5 class="text-danger price m-0">$ <%= data.price %> .00</h5>
+               
               </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
+              <div class="col p-0 text-center pb-2">
+                <a href="product-detail/<%=data._id%>" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
               </div>
             </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
+            
           </div>
           </a>
         </div>
         
-        <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-              </div>
-              
-              <div class="item">
-          <a href="#">
-          <div class="card">
-            <div class="card-body pb-0">
-              <span class="text-secondary merchant-item">Phone Store</span>
-              <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-            </div>
-            <div class="product-image">
-            <img src="https://cdn.shopify.com/s/files/1/0013/8815/0848/products/Smartphone2_7b3858f5-0ca9-4807-a1b5-5b99362dbee3_300x.jpg?v=1542250361" class="card-img-top" />
-            </div>
-            <div class="card-body py-1 row">
-              <div class="col">
-                <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-              </div>
-              <div class="col p-0 text-center">
-                <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-              </div>
-            </div>
-            <div class="overlay-btn p-1">
-                <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-            </div>
-          </div>
-          </a>
-        </div>
+        <% }) %>
+      
         
       </div>
     </div>
@@ -404,11 +162,15 @@
       </div>
 
       <div class="row">
+
+
+         <% product.forEach((data)=>{ %> 
+
         <div class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="images/p1.png" alt="">
-              <a href="" class="add_cart_btn">
+              <img src="uploads/<%=data.image%>" alt="">
+              <a href="/product-detail/<%= data._id %>" class="add_cart_btn">
                 <span>
                   Add To Cart
                 </span>
@@ -416,255 +178,29 @@
             </div>
             <div class="detail-box">
               <h5>
-                Product Name
+                 <%= data.name  %>
               </h5>
               <div class="product_info">
                 <h5>
-                  <span>$</span> 300
+                  <span>$</span> <%= data.price  %>
                 </h5>
-                <div class="star_container">
+                <!-- <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>
                   <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p2.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p3.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p4.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p5.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p6.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p7.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p8.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/p9.png" alt="">
-              <a href="" class="add_cart_btn">
-                <span>
-                  Add To Cart
-                </span>
-              </a>
-            </div>
-            <div class="detail-box">
-              <h5>
-                Product Name
-              </h5>
-              <div class="product_info">
-                <h5>
-                  <span>$</span> 300
-                </h5>
-                <div class="star_container">
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
+
+        <% }) %>
+
+
+
       </div>
       <div class="btn_box">
         <a href="" class="view_more-link">
@@ -723,277 +259,35 @@
       <div class="row">
         <div class="owl-carousel owl-theme vertical-divider">
           
+          <% latest_product.forEach((data)=>{  %>
+
+            <div class="item">
+              <a href="#">
+              <div class="card">
+                <div class="card-body pb-0">
+                  <span class="text-secondary merchant-item">Amazone To Amazone Store</span>
+                  <p class="text-primary mb-0 product-title"><%= data.name%></p>
+                </div>
+                <div class="product-image">
+                <img src="uploads/<%=data.image%>" />
+                </div>
+                <div class="card-body py-1 row">
+                  <div class="col">
+                    <h5 class="text-danger price m-0">$ <%= data.price %> .00</h5>
+                   
+                  </div>
+                  <div class="col p-0 text-center pb-2">
+                    <a href="product-detail/<%=data._id%>" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
+                  </div>
+                </div>
+                
+              </div>
+              </a>
+            </div>
+            
+            <% }) %>
           
           
-          <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97 Edge</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p1.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-          </div>
-          
-          <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p2.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p3.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p4.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p5.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p6.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p7.png" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p8.png" class="card-img-top" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p9.png" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-                </div>
-                
-                <div class="item">
-            <a href="#">
-            <div class="card">
-              <div class="card-body pb-0">
-                <span class="text-secondary merchant-item">Phone Store</span>
-                <p class="text-primary mb-0 product-title">Smartphone Samsung S97</p>
-              </div>
-              <div class="product-image">
-              <img src="./images/p5.png" />
-              </div>
-              <div class="card-body py-1 row">
-                <div class="col">
-                  <h5 class="text-danger price m-0">Rp. 12.500.000</h5>
-                  <span class="text-secondary strike"><del>Rp. 2.000.000</del></span>
-                </div>
-                <div class="col p-0 text-center">
-                  <a href="#" class="btn btn-secondary btn-circle m-auto"><i class="fa fa-shopping-cart"></i></a>
-                </div>
-              </div>
-              <div class="overlay-btn p-1">
-                  <a href="#" class="btn m-auto"><i class="fa fa-eye"></i> Quick View</a>
-                  <a href="#" class="btn m-auto"><i class="fa fa-heart"></i> Wishlist</a>
-              </div>
-            </div>
-            </a>
-          </div>
           
         </div>
       </div>

@@ -1,5 +1,10 @@
+import passport from "passport";
+import StrategyGoogle   from "passport-google-oauth20";
+const GoogleStrategy = StrategyGoogle.Strategy; 
+console.log(GoogleStrategy);
 import env from "dotenv";
 env.config();
+
 import express from "express";
 import web from "./routes/web.js";
 import admin from "./routes/admin.js";
@@ -14,6 +19,8 @@ import MongoStore from "connect-mongo";
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
+
+
 
 
 app.use(cors());
@@ -35,6 +42,43 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.use(new GoogleStrategy(
+  
+  {
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+},
+(accessToken, refreshToken, profile, cb) => {
+  // Here, you can save the user information to your database
+  return cb(null, profile);
+}
+));
+
+app.get('/logout', function(req, res, next) {
+  req.logout(function(err) {  // do this
+    if (err) { return next(err); }// do this
+    res.redirect('/');
+  });
+});
+
+
+
+
+
+
 app.use((req, res, next) => {
   if (req.session.user) {
     res.locals.user = req.session.user;
