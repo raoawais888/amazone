@@ -91,12 +91,7 @@ class authController {
       console.log("Error", error);
     }
   };
-  static logout = async (req, res) => {
-    await req.session.destroy(() => {
-      console.log("Session Destroyed");
-    });
-    res.redirect("/login");
-  };
+ 
   
 }
 

@@ -118,13 +118,16 @@ let notifier = new AWN();
          }).then(resp => {
           return resp.json();
         }).then((json) => {
-
          console.log(json);      
         
-  
-              
+            total_price.innerText = json.price;
+             cart_counter.innerText = json.qty 
+             btn.closest('tr').style.display = "none";
+             new AWN().alert('Item Remove in to cart', {durations: {Added: 0}})
+
        }).catch(err => {
            
+        console.log(err)
         })
 
 

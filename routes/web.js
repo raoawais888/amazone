@@ -1,7 +1,9 @@
 import express from "express";
+import passport from "passport";
 import HomeController from "../controllers/HomeController.js";
 import authController from "../controllers/authController.js";
 import cartController from "../controllers/cartController.js";
+import ensureAuthenticated from "../middleware/googleAuthMiddleware.js"
 
 
 
@@ -21,6 +23,26 @@ router.get("/checkout", cartController.checkout);
 router.get("/register", authController.register);
 router.post("/register", authController.store);
 router.get("/login",authController.login);
-router.post("/login", authController.auth);
-router.get("/logout", authController.logout);
+router.post("/login", authController.auth);// Logout route
+
+
+
+
+// Initiates the Google OAuth2 authentication process
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// Completes the Google OAuth2 authentication process
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect to the home page
+    res.redirect('/vendor');
+  });
+
+
+  router.get('/dashboard', ensureAuthenticated, (req, res) => {
+    // This route requires authentication
+    res.render('dashboard');
+  });
 export default router;
