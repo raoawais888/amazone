@@ -1,4 +1,5 @@
 import product from "../models/productModel.js"
+import transporter from "../config/emailSend.js";
 class cartController {
 
      static index = async(req , res) =>{
@@ -171,6 +172,28 @@ class cartController {
 
      }
 
+
+     static send = async (req , res)=>{
+         
+        try {
+
+              // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: "leadtest77@gmail.com", // sender address
+    to: "raoawais888@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+            
+        } catch (error) {
+            
+            console.log(error);
+        }
+        
+     }
 
 
     }
