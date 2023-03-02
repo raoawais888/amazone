@@ -14,11 +14,13 @@ router.get("/product", HomeController.product);
 router.get("/product-detail/:id", HomeController.product_detail);
 router.get("/why", HomeController.why);
 router.get("/testimonial", HomeController.testimonial);
+router.get("/privacy-policy", HomeController.privacy);
 router.get("/cart", cartController.index);
 router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
 router.post("/delete_Cart", cartController.deleteCart);
 router.get("/checkout", cartController.checkout);
+router.get("/send", cartController.send);
 
 router.get("/register", authController.register);
 router.post("/register", authController.store);

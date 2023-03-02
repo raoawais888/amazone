@@ -38,6 +38,9 @@ class HomeController {
   static dashboard = async (req, res) => {
     await res.render("vendor/pages/dashboard");
   };
+  static privacy = async (req, res) => {
+    await res.render("vendor/pages/privacy_policy");
+  };
 }
 
 export default HomeController;

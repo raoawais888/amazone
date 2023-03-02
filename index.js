@@ -1,7 +1,10 @@
 import passport from "passport";
 import StrategyGoogle   from "passport-google-oauth20";
 const GoogleStrategy = StrategyGoogle.Strategy; 
-console.log(GoogleStrategy);
+
+import  Facebook from  'passport-facebook';
+const FacebookStrategy = Facebook.Strategy;
+
 import env from "dotenv";
 env.config();
 
@@ -66,6 +69,36 @@ passport.use(new GoogleStrategy(
   return cb(null, profile);
 }
 ));
+
+
+
+// facebook login  
+
+passport.use(new FacebookStrategy({
+  clientID: "507202154822583",
+  clientSecret: "0aa29b1ff2c0bd4cf6a67892cd2b0ebc",
+  callbackURL: "http://localhost:8000/auth/facebook/callback"
+},
+function(accessToken, refreshToken, profile, cb) {
+  // User has been authenticated, do something with the data
+}));
+
+
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
+
+
+  app.get('/profile', passport.authenticate('facebook'), function(req, res) {
+    // Render the user's profile page
+    res.render('profile', { user: req.user });
+  });
 
 app.get('/logout', function(req, res, next) {
   req.logout(function(err) {  // do this
