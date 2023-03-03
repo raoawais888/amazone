@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     email: { type: String, require: true, unique: true },
     userType: { type: Number, require: true },
     isActive: {type: Number, default: 0},
-    password: {type: String, require:true},
+    password: {type: String},
     created_at: {type:Date, default:Date.now}
 })
 
