@@ -4,6 +4,7 @@ import HomeController from "../controllers/HomeController.js";
 import authController from "../controllers/authController.js";
 import cartController from "../controllers/cartController.js";
 import ensureAuthenticated from "../middleware/googleAuthMiddleware.js"
+import checkoutController from "../controllers/checkoutController.js";
 
 
 
@@ -20,6 +21,7 @@ router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
 router.post("/delete_Cart", cartController.deleteCart);
 router.get("/checkout", cartController.checkout);
+router.post("/checkout", checkoutController.checkout);
 router.get("/send", cartController.send);
 
 router.get("/register", authController.register);
