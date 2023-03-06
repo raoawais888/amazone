@@ -19,6 +19,7 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import MongoStore from "connect-mongo";
+import LocalPassport  from "./config/authConfig.js"
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
@@ -45,8 +46,12 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+LocalPassport(passport);
 
 
 passport.serializeUser(function(user, done) {
@@ -74,31 +79,31 @@ passport.use(new GoogleStrategy(
 
 // facebook login  
 
-passport.use(new FacebookStrategy({
-  clientID: "507202154822583",
-  clientSecret: "0aa29b1ff2c0bd4cf6a67892cd2b0ebc",
-  callbackURL: "http://localhost:8000/auth/facebook/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  // User has been authenticated, do something with the data
-}));
+// passport.use(new FacebookStrategy({
+//   clientID: "507202154822583",
+//   clientSecret: "0aa29b1ff2c0bd4cf6a67892cd2b0ebc",
+//   callbackURL: "http://localhost:8000/auth/facebook/callback"
+// },
+// function(accessToken, refreshToken, profile, cb) {
+//   // User has been authenticated, do something with the data
+// }));
 
 
 
-app.get('/auth/facebook', passport.authenticate('facebook'));
+// app.get('/auth/facebook', passport.authenticate('facebook'));
 
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+// app.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
 
 
-  app.get('/profile', passport.authenticate('facebook'), function(req, res) {
-    // Render the user's profile page
-    res.render('profile', { user: req.user });
-  });
+  // app.get('/profile', passport.authenticate('facebook'), function(req, res) {
+  //   // Render the user's profile page
+  //   res.render('profile', { user: req.user });
+  // });
 
 app.get('/logout', function(req, res, next) {
   req.logout(function(err) {  // do this
