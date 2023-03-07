@@ -7,4 +7,4 @@ const isVendor = (req,res,next) => {
       res.redirect('/')
     }
 }
-export default isVendor;
+module.exports = isVendor;

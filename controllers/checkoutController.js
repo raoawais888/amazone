@@ -18,4 +18,4 @@ class checkout {
 
 }
 
-export default checkout
+module.exports = checkout

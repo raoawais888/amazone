@@ -1,7 +1,7 @@
-import userModel from "../models/userModel.js";
-import bcrypt from "bcrypt";
-import validator from "validator";
-import passport from "passport";
+const userModel = require( "../models/userModel.js");
+const bcrypt = require( "bcrypt");
+const validator = require( "validator");
+const passport = require( "passport");
 class authController {
   static register = async (req, res) => {
     try {
@@ -116,4 +116,4 @@ class authController {
   
 }
 
-export default authController;
+ module.exports = authController;

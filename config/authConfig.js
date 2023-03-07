@@ -1,15 +1,13 @@
  
-import local from  "passport-local";
-import userModel from "../models/userModel.js";
-import bcrypt from "bcrypt";
+const local  =   require ("passport-local");
+const  userModel =  require ("../models/userModel.js");
+const  bcrypt = require ("bcrypt");
 const LocalStategy = local.Strategy;
 
 
 const  init = (passport)=>{
-     
-
-
-           passport.use(new LocalStategy ({usernameField:'email'}, async (email,password,done)=>{
+    
+    passport.use(new LocalStategy ({usernameField:'email'}, async (email,password,done)=>{
 
              const user = await  userModel.findOne({email:email});
              
@@ -20,7 +18,6 @@ const  init = (passport)=>{
               return done(null, user , {message:"Incorrect Username Or password"});
 
              }
-
 
                  if(await bcrypt.compare(password,user.password)){
 
@@ -53,4 +50,4 @@ const  init = (passport)=>{
 
 }
 
-export default init;
+module.exports =  init;
