@@ -71,7 +71,10 @@ passport.use(new GoogleStrategy(
 },
 (accessToken, refreshToken, profile, cb) => {
   // Here, you can save the user information to your database
+  
+  console.log(profile._json);
   return cb(null, profile);
+
 }
 ));
 
