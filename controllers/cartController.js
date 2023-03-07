@@ -1,5 +1,5 @@
-import product from "../models/productModel.js"
-import transporter from "../config/emailSend.js";
+const product = require( "../models/productModel.js");
+const transporter = require( "../config/emailSend.js");
 class cartController {
 
      static index = async(req , res) =>{
@@ -199,4 +199,4 @@ class cartController {
     }
 
 
-export default cartController
+ module.exports =   cartController

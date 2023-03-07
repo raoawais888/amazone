@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose =  require("mongoose");
 
 const order = new mongoose({
 
@@ -16,4 +16,4 @@ const order = new mongoose({
 
 const orderModel = mongoose.model('order', order);
 
-export default orderModel;
+module.exports = orderModel;

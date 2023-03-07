@@ -1,5 +1,5 @@
 
-import productModel from "../models/productModel.js";
+const productModel = require ("../models/productModel.js");
 
 class HomeController {
   static index = async (req, res) => {
@@ -43,4 +43,4 @@ class HomeController {
   };
 }
 
-export default HomeController;
+module.exports =  HomeController;

@@ -1,8 +1,8 @@
-import express from "express";
-import upload from "../config/multerConfig.js";
-import vendorController from "../controllers/vendor/vendorController.js";
+const  express =   require("express");
+const upload =  require("../config/multerConfig.js");
+const  vendorController = require("../controllers/vendor/vendorController.js");
 
-import vendorProductController from "../controllers/vendor/vendorProductController.js";
+const  vendorProductController = require( "../controllers/vendor/vendorProductController.js");
 const router = express.Router();
 
 
@@ -17,4 +17,4 @@ router.post("/edit-product/:id", upload.single("productImg"),vendorProductContro
 router.get("/delete-product/:id",vendorProductController.deleteProduct);
 
 
-export default router;
+module.exports = router;

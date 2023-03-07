@@ -1,25 +1,25 @@
-import passport from "passport";
-import StrategyGoogle   from "passport-google-oauth20";
+const passport = require('passport');
+const StrategyGoogle =  require('passport-google-oauth20');
 const GoogleStrategy = StrategyGoogle.Strategy; 
 
-import  Facebook from  'passport-facebook';
+const   Facebook  =  require('passport-facebook');
 const FacebookStrategy = Facebook.Strategy;
 
-import env from "dotenv";
+const env  = require("dotenv");
 env.config();
 
-import express from "express";
-import web from "./routes/web.js";
-import admin from "./routes/admin.js";
-import vendor from "./routes/vendor.js";
-import path from "path";
-import CONNECT_DB from "./db/connection.js";
-import flash from "connect-flash";
-import session from "express-session";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import MongoStore from "connect-mongo";
-import LocalPassport  from "./config/authConfig.js"
+const express = require( "express");
+const web = require("./routes/web.js");
+const  admin = require("./routes/admin.js");
+const vendor = require("./routes/vendor.js");
+const  path =  require ("path");
+const CONNECT_DB = require ("./db/connection.js");
+const  flash = require ("connect-flash");
+const  session = require("express-session");
+const cookieParser =   require("cookie-parser");
+const cors = require("cors");
+const  MongoStore =  require( "connect-mongo") ;
+const LocalPassport  =  require("./config/authConfig.js");
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;

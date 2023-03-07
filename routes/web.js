@@ -1,10 +1,10 @@
-import express from "express";
-import passport from "passport";
-import HomeController from "../controllers/HomeController.js";
-import authController from "../controllers/authController.js";
-import cartController from "../controllers/cartController.js";
-import ensureAuthenticated from "../middleware/googleAuthMiddleware.js"
-import checkoutController from "../controllers/checkoutController.js";
+const express =  require("express");
+const passport =  require("passport");
+const HomeController =  require("../controllers/HomeController.js");
+const authController =  require("../controllers/authController.js");
+const cartController =  require("../controllers/cartController.js");
+const ensureAuthenticated =  require("../middleware/googleAuthMiddleware.js");
+const checkoutController =  require("../controllers/checkoutController.js");
 
 
 
@@ -49,4 +49,4 @@ router.get('/auth/google/callback',
     // This route requires authentication
     res.render('dashboard');
   });
-export default router;
+module.exports = router ;

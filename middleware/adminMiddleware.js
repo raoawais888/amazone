@@ -8,4 +8,4 @@ const isAdmin = (req,res,next) => {
         res.redirect('/')
       }
   }
-  export default isAdmin;
+ module.exports = isAdmin;

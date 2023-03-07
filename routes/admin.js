@@ -1,9 +1,9 @@
-import express from "express";
-import upload from "../config/multerConfig.js";
-import adminController from "../controllers/admin/adminController.js";
-import categoryController from "../controllers/admin/categoryController.js";
-import productController from "../controllers/admin/productController.js";
-import adminMiddleware  from "../middleware/adminMiddleware.js";
+const express = require( "express");
+const  upload = require  ("../config/multerConfig.js");
+const adminController = require("../controllers/admin/adminController.js");
+const  categoryController = require ("../controllers/admin/categoryController.js");
+const  productController =  require("../controllers/admin/productController.js");
+const  adminMiddleware  = require ("../middleware/adminMiddleware.js");
 const router = express.Router();
 
 router.use(adminMiddleware);
@@ -25,5 +25,4 @@ router.get("/edit-product/:id", productController.editProduct);
 router.post("/edit-product/:id", upload.single("productImg"),productController.updateProduct);
 router.get("/delete-product/:id",productController.deleteProduct);
 
-
-export default router;
+module.exports = router;

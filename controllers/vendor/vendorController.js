@@ -17,4 +17,4 @@ class vendorController {
 
 }
 
-export default vendorController;
+module.exports = vendorController;

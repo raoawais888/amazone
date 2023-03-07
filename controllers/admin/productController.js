@@ -1,6 +1,6 @@
-import productModel from "../../models/productModel.js";
-import categoryModel from "../../models/categoryModel.js";
-import fs from 'fs'
+const  productModel = require( "../../models/productModel.js");
+const  categoryModel = require( "../../models/categoryModel.js");
+const  fs = require( 'fs');
 class productController {
     static allProduct = async (req,res) => {
         try {
@@ -132,4 +132,4 @@ class productController {
         }
     }
 }
-export default productController
+module.exports =  productController
