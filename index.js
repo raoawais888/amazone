@@ -1,7 +1,4 @@
 const passport = require('passport');
-const StrategyGoogle =  require('passport-google-oauth20');
-const GoogleStrategy = StrategyGoogle.Strategy; 
-
 const   Facebook  =  require('passport-facebook');
 const FacebookStrategy = Facebook.Strategy;
 
@@ -20,6 +17,7 @@ const cookieParser =   require("cookie-parser");
 const cors = require("cors");
 const  MongoStore =  require( "connect-mongo") ;
 const LocalPassport  =  require("./config/authConfig.js");
+const GoogleConfig = require('./config/googleConfig.js');
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
@@ -54,29 +52,7 @@ app.use(passport.session());
 LocalPassport(passport);
 
 
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.use(new GoogleStrategy(
-  
-  {
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL
-},
-(accessToken, refreshToken, profile, cb) => {
-  // Here, you can save the user information to your database
-  
-  console.log(profile._json);
-  return cb(null, profile);
-
-}
-));
+GoogleConfig(passport);
 
 
 

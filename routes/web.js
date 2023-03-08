@@ -40,8 +40,9 @@ router.get('/auth/google',
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {
+
     // Successful authentication, redirect to the home page
-    res.redirect('/vendor');
+    res.redirect('/');
   });
 
 
