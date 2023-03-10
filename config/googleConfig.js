@@ -18,13 +18,15 @@ passport.use(new GoogleStrategy(
 
     console.log(check);
     if(!check){
-      console.log("not Exist");
-    }else{
-      console.log("exist");
+      
     
+
+    }else{
+     
+    return cb(null, profile);
     }
 
-  return cb(null, profile);
+  
 
 }
 ));
