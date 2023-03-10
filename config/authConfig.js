@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 
    const init = (passport) =>{
              
-
     passport.use(new LocalStategy({usernameField:'email'},async (email,password,done)=>{
 
         const user = await User.findOne({email:email});
@@ -39,6 +38,7 @@ const bcrypt = require("bcrypt");
       User.findById(id,(err, user)=> {
         done(err, user);
       });
+
     });
 
 

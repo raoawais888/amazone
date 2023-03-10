@@ -139,7 +139,32 @@
   <script>
 
 
+
 $(document).ready(function(){
+
+
+  $("#login_show").on("click",function(){
+
+        //  alert code 
+        Swal.fire({
+  title: 'Please Login FIrst?',
+  confirmButtonText: 'Ok'
+}).then((result) => {
+  /* Read more about isConfirmed, isDenied below */
+  if (result.isConfirmed) {
+     
+    window.location.href = "/login";
+
+  } else if (result.isDenied) {
+    Swal.fire('Changes are not saved', '', 'info')
+  }
+})
+        //  alert code 
+
+
+  })
+
+
 
 // slider 
 $('#lightSlider').lightSlider({

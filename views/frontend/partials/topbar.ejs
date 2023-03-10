@@ -28,9 +28,7 @@
  <input type="hidden" name="search_param" value="all" id="search_param">
  <input type="text" class="form-control" name="x" id="search" placeholder="Search">
  
-   
  
-        
           <button class="" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
@@ -40,23 +38,23 @@
       
       <div class="user_option_box">
         
-        <% if(!user){ %>
+        <% if(user){ %>
           
-          <a href="/login" class="account-link">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span> Login </span>
-          </a>
-    
-         
-        <% }else{ %>
-
-          <form action="/logout" method="POST" id="log_form">
-            <a href="#" onclick="document.getElementById('log_form').submit" class="account-link">
+          <form action="/logout" method="POST" id="log_form" style="cursor: pointer;">
+            <a href="#" onclick="document.getElementById('log_form').submit()" class="account-link">
               <i class="fa fa-user" aria-hidden="true"></i>
                 <span>Logout</a></span>
             </a>
           </form>
+         
+    
+         
+        <% }else{ %>
 
+          <a href="/login" class="account-link">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span> Login </span>
+          </a>
         <% } %>
 
         <a href="/cart" class="cart-link">

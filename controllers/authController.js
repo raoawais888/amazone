@@ -89,8 +89,20 @@ class authController {
               req.flash ('error',info.message);
           return next(err);
             }
+  
+            
+            if(req.user.userType == 1){
+              res.redirect("/admin")
+            }
+            if(req.user.userType == 2){
+              res.redirect("/vendor")
+            }
 
-            res.redirect("/");
+            if(req.user.userType == 3){
+              res.redirect("/")
+            }
+
+
           })
 
       })(req,res,next);
@@ -101,6 +113,29 @@ class authController {
     }
   };
  
+
+   static logout = async (req,res,next)=>{
+    try {
+    
+      req.logout((err)=>{
+
+        if(err){
+            
+          return next(err);
+           
+        }
+
+        res.redirect("/");
+        
+
+      })
+      
+    
+    } catch (error) {
+      console.log(error);
+
+    }
+   }
 
 
   

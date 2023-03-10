@@ -53,8 +53,8 @@ LocalPassport(passport);
 // GoogleConfig(passport);
 
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
@@ -87,34 +87,26 @@ LocalPassport(passport);
   //   res.render('profile', { user: req.user });
   // });
 
-app.get('/logout', function(req, res, next) {
-  req.logout(function(err) {  // do this
-    if (err) { return next(err); }// do this
-    res.redirect('/');
-  });
-});
 
 
 
 
 
 
-app.use((req, res, next) => {
-  if (req.session.user) {
-    res.locals.user = req.user;
-  }
-  next();
-});
-
-app.use((req, res, next) => {
-  res.locals.session = req.session;
-  next();
-});
 app.use(flash());
+
+
+
 app.use((req, res, next) => {
   res.locals.message = req.flash();
+  res.locals.session = req.session;
+  res.locals.user = req.user;
+  
   next();
 });
+
+
+
 app.use(express.urlencoded({extended:true}));
 app.use("/", web);
 
