@@ -91,7 +91,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <% if(user){ %>
                                 <td> <a  href="/checkout" class="btn btn-success">Checkout</span></button></td>
+                                    <% }else{ %>
+                                        <td> <a  href="/login" class="btn btn-success">Login To checkout</span></button></td>
+                                    <% } %>
                                    </tr>
                                 </tbody>
                             </table>

@@ -44,7 +44,7 @@
                                         <div class="d-flex flex-column ml-1 comment-profile">
                                             <div class="comment-ratings"> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> </div> <span class="username">Lori
+                                                 class="fa fa-star"></i> </div> <span class="username">Lori
                                                 Benneth</span>
                                         </div>
                                     </div>
@@ -76,9 +76,20 @@
                             <div class="about"> <span class="font-weight-bold"><%= detail.name %> </span>
                                 <h4 class="font-weight-bold">$<%= detail.price %></h4>
                             </div>
-                            <div class="buttons">  <button  onclick="addTOCart()"  data-product="<%= JSON.stringify(detail) %>" id="add_cart_btn" class="btn btn-outline-warning btn-long cart">Add to
+                            <div class="buttons">  
+                                
+                                <% if(user){ %>
+
+                                <button  onclick="addTOCart()"  data-product="<%= JSON.stringify(detail) %>" id="add_cart_btn" class="btn btn-outline-warning btn-long cart">Add to
                                      Cart</button>
                                
+                                     <% }else{ %>
+
+                                        <button class="btn btn-outline-warning btn-long cart" id="login_show">Add to
+                                            Cart</button>
+
+
+                                     <% } %>
                                         <!--<button class="btn btn-warning btn-long buy">Buy it Now</button>
                                 <button class="btn btn-light wishlist"> <i class="fa fa-heart"></i> </button> </div> -->
                             <hr>

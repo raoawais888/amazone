@@ -59,10 +59,8 @@ class authController {
 
   static auth =  (req, res , next) => {
     try {
-
-
-      const { email, pass } = req.body;
-      if (!email || !pass) {
+      const { email, password } = req.body;
+      if (!email || !password) {
         req.flash("fail", "Please Fill all fields!");
         res.redirect("/login");
       } 
@@ -71,48 +69,73 @@ class authController {
         req.flash("fail", "Please Enter valid Email!");
         res.redirect("/login");
       } 
-        
+
       passport.authenticate('local',(err,user,info)=>{
-         
-       if(err){
-        req.flash("error","something Wrong");
-        next(err);
-       }   
-      
-        if(!user){
-          req.flash("error","Incorrect Username Or password");
+
+         if(err){
+          req.flash ('error',info.message);
+          return next(err);
+         }
+
+         if(!user){
+
+          req.flash ('error',info.message);
           res.redirect("/login")
-        }
-           
-        req.logIn(user,(err)=>{
+         }
 
-          console.log(user);
-          
-          //  if(err){
-          //   req.flash("error",info.message);
-          //   next(err);
-          //  }
+          req.logIn(user,(err)=>{
 
-          //   res.redirect("/");
+            if(err){
+              req.flash ('error',info.message);
+          return next(err);
+            }
+  
+            
+            if(req.user.userType == 1){
+              res.redirect("/admin")
+            }
+            if(req.user.userType == 2){
+              res.redirect("/vendor")
+            }
 
-
-        })
-
-
-
-
-
-
-      }) (req,res,next);
+            if(req.user.userType == 3){
+              res.redirect("/")
+            }
 
 
+          })
 
-
+      })(req,res,next);
+        
+      
     } catch (error) {
       console.log("Error", error);
     }
   };
  
+
+   static logout = async (req,res,next)=>{
+    try {
+    
+      req.logout((err)=>{
+
+        if(err){
+            
+          return next(err);
+           
+        }
+
+        res.redirect("/");
+        
+
+      })
+      
+    
+    } catch (error) {
+      console.log(error);
+
+    }
+   }
 
 
   

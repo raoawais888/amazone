@@ -1,11 +1,18 @@
 
 const isAdmin = (req,res,next) => {
-    const user = req.session.user
-      if(user.userType == 1)
-      {
-        next();
+      if(req.user){
+ 
+         if(req.user.userType == 1){
+              
+          next();
+
+         }else{
+          res.redirect("/");
+         }
+
       }else{
-        res.redirect('/')
+        res.redirect("back");
       }
+      
   }
  module.exports = isAdmin;

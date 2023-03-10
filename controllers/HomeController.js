@@ -5,6 +5,7 @@ class HomeController {
   static index = async (req, res) => {
 
       // console.log(req.user);
+    
 
     const product = await productModel.find();
     const latest_product = await productModel.find().sort('-created_at').limit(10);

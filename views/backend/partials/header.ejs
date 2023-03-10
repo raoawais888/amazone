@@ -275,10 +275,13 @@
                   Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="/logout" class="dropdown-item has-icon text-danger">
+                <form  method="post" action="/logout" id="log_form" style="cursor: pointer;">
+                <a href="#" onclick="document.getElementById('log_form').submit()" class="dropdown-item has-icon text-danger">
                   <i class="fas fa-sign-out-alt"></i>
+                  
                   Logout
-                </a>/
+                </a>
+              </form>
               </div>
             </li>
           </ul>
