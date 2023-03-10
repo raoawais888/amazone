@@ -1464,6 +1464,16 @@ a:hover{
 #breadcrumb h2{
   font-weight: bold;
 }
+.btn-primary{
+  background-color: #f08804;
+  border: 2px solid #f08804 ;
+  outline: none;
+}
+.btn-primary:hover{
+ background: transparent;
+ border: 2px solid #f08804 ;
+ color: #f08804;
+}
 /*# sourceMappingURL=style.css.map */
 
 

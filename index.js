@@ -1,9 +1,10 @@
+const env  = require("dotenv");
+env.config();
+
 const passport = require('passport');
 const   Facebook  =  require('passport-facebook');
 const FacebookStrategy = Facebook.Strategy;
 
-const env  = require("dotenv");
-env.config();
 
 const express = require( "express");
 const web = require("./routes/web.js");
@@ -17,7 +18,7 @@ const cookieParser =   require("cookie-parser");
 const cors = require("cors");
 const  MongoStore =  require( "connect-mongo") ;
 const LocalPassport  =  require("./config/authConfig.js");
-const GoogleConfig = require('./config/googleConfig.js');
+// const GoogleConfig = require('./config/googleConfig.js');
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
@@ -46,13 +47,15 @@ app.use(
 );
 
 
-app.use(passport.initialize());
-app.use(passport.session());
 
 LocalPassport(passport);
 
+// GoogleConfig(passport);
 
-GoogleConfig(passport);
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 
 
 
@@ -98,7 +101,7 @@ app.get('/logout', function(req, res, next) {
 
 app.use((req, res, next) => {
   if (req.session.user) {
-    res.locals.user = req.session.user;
+    res.locals.user = req.user;
   }
   next();
 });
