@@ -1456,10 +1456,10 @@ a:hover{
 
 #breadcrumb{
   padding: 100px 0px;
-  background-image: url("../images/banner2.jpg");
-  background-size: contain;
+  background-image: url("../images/banner3.jpg");
   text-align: center;
   background-repeat: no-repeat;
+  background-position: -4px -387px;
 }
 #breadcrumb h2{
   font-weight: bold;
