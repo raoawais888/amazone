@@ -4,9 +4,8 @@ class vendorProductController {
     static allProduct = async (req,res) => {
         try {
            
-            const user =  req.session.user
-              const user_id = user._id;
-            const Products = await productModel.find({user:user_id}).populate('category');
+          
+            const Products = await productModel.find().populate('category');
             res.render("vendor/pages/products/products",{products:Products})
         } catch (error) {
             console.log("Error",error)

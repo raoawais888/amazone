@@ -44,6 +44,10 @@ class HomeController {
   static privacy = async (req, res) => {
     await res.render("vendor/pages/privacy_policy");
   };
+
+  static order = async (req, res) => {
+    await res.render("frontend/pages/order");
+  };
 }
 
 module.exports =  HomeController;
