@@ -178,16 +178,41 @@ class cartController {
         try {
 
               // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: "leadtest77@gmail.com", // sender address
-    to: "raoawais888@gmail.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
-  });
+//   let info = await transporter.sendMail({
+//     from: "leadtest77@gmail.com", 
+//     to: "raoawais888@gmail.com", 
+//     subject: "Hello ✔", 
+//     text: "Hello world?", 
+//     html: "<b>Hello world?</b>", 
+//   });
 
-  console.log("Message sent: %s", info.messageId);
-            
+//   console.log("Message sent: %s", info.messageId);
+      
+
+
+const sendEmail = (receiver, subject, content) => {
+    ejs.renderFile(__dirname + '/mails/verify.ejs', { receiver, content }, (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        var mailOptions = {
+          from: 'email_username',
+          to: receiver,
+          subject: subject,
+          html: data
+        };
+  
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            return console.log(error);
+          }
+          console.log('Message sent: %s', info.messageId);
+        });
+      }
+    });
+  };
+  
+
         } catch (error) {
             
             console.log(error);

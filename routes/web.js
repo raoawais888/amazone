@@ -5,6 +5,7 @@ const authController =  require("../controllers/authController.js");
 const cartController =  require("../controllers/cartController.js");
 const ensureAuthenticated =  require("../middleware/googleAuthMiddleware.js");
 const checkoutController =  require("../controllers/checkoutController.js");
+const guest = require("../middleware/Guest.js");
 
 
 
@@ -24,9 +25,9 @@ router.get("/checkout", cartController.checkout);
 router.post("/checkout", checkoutController.checkout);
 router.get("/send", cartController.send);
 
-router.get("/register", authController.register);
+router.get("/register",guest, authController.register);
 router.post("/register", authController.store);
-router.get("/login",authController.login);
+router.get("/login",guest,authController.login);
 router.post("/login", authController.auth);// Logout route
 router.post("/logout", authController.logout);// Logout route
 

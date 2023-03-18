@@ -3,7 +3,9 @@ const bcrypt = require( "bcrypt");
 const validator = require( "validator");
 const passport = require( "passport");
 class authController {
+
   static register = async (req, res) => {
+    
     try {
       await res.render("frontend/pages/register");
     } catch (error) {
@@ -89,20 +91,8 @@ class authController {
               req.flash ('error',info.message);
           return next(err);
             }
-  
-            
-            if(req.user.userType == 1){
-              res.redirect("/admin")
-            }
-            if(req.user.userType == 2){
-              res.redirect("/vendor")
-            }
 
-            if(req.user.userType == 3){
-              res.redirect("/")
-            }
-
-
+            res.redirect("/");
           })
 
       })(req,res,next);
@@ -112,30 +102,21 @@ class authController {
       console.log("Error", error);
     }
   };
- 
 
-   static logout = async (req,res,next)=>{
+  
+  static logout = async (req,res)=>{
     try {
-    
-      req.logout((err)=>{
-
-        if(err){
-            
-          return next(err);
-           
-        }
-
-        res.redirect("/");
-        
-
-      })
       
-    
-    } catch (error) {
-      console.log(error);
+      req.logout(req.user, err => {
+        if(err) return next(err);
+        res.redirect("/");
+      });
 
+    } catch (error) {
+      
+      console.log(error);
     }
-   }
+  }
 
 
   
