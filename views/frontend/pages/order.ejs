@@ -1,0 +1,54 @@
+
+<body class="sub_page">
+
+
+    <!-- header section strats -->
+   <%- include("../partials/header.ejs") %>
+    <!-- end header section -->
+  </div>
+
+
+  <section id="breadcrumb">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Orders</h2>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- about section -->
+
+  <section class="order_section py-5">
+    <div class="container">
+         <div class="col-sm-12">
+
+            <table class="table table-responsive-sm">
+                <thead>
+                    <th>sr</th>
+                    <th>Order Number</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>42349239479</td>
+                        <td> <span class="badge badge-pill badge-warning">Pending</span></td>
+                        <td><a href="" class="btn btn-warning">Detail</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+         </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+  <%- include("../partials/footer.ejs")  %>
