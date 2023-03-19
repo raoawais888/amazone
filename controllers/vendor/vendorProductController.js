@@ -5,7 +5,7 @@ class vendorProductController {
         try {
            
           
-            const Products = await productModel.find().populate('category');
+            const Products = await productModel.find({user:req.user._id}).populate('category');
             res.render("vendor/pages/products/products",{products:Products})
         } catch (error) {
             console.log("Error",error)
@@ -13,7 +13,8 @@ class vendorProductController {
     }
     static addProduct = async (req,res) => {
         try {
-            const category= await categoryModel.find({})
+            
+            const category= await categoryModel.find()
             res.render("vendor/pages/products/addProduct",{category:category})
         } catch (error) {
             console.log("Error",error)
@@ -21,9 +22,9 @@ class vendorProductController {
     }
     static storeProduct = async (req,res) => {
         try {
-            const user =  req.session.user
-              const user_id = user._id;
-                
+           
+           
+            
 
             const {pname,pprice,qty,pdesc,p_cat} = req.body
                var img = req.file
@@ -49,7 +50,7 @@ class vendorProductController {
                         stock:qty,
                         image:img,
                         desc:pdesc,
-                        user:user_id
+                        user:req.user._id
 
                     })
                     await ProductDoc.save()

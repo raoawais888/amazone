@@ -18,13 +18,15 @@ router.get("/why", HomeController.why);
 router.get("/testimonial", HomeController.testimonial);
 router.get("/privacy-policy", HomeController.privacy);
 router.get("/order", HomeController.order);
+router.get("/order_detail/:order", HomeController.orderDetail);
 router.get("/cart", cartController.index);
 router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
 router.post("/delete_Cart", cartController.deleteCart);
 router.get("/checkout", cartController.checkout);
 router.post("/checkout", checkoutController.checkout);
-router.get("/send", cartController.send);
+router.get("/thankyou", checkoutController.thankyou);
+router.post("/search",HomeController.search);
 
 router.get("/register",guest, authController.register);
 router.post("/register", authController.store);

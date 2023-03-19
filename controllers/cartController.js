@@ -1,16 +1,19 @@
 const product = require( "../models/productModel.js");
 const transporter = require( "../config/emailSend.js");
+const categoryModel = require( "../models/categoryModel.js");
+
 class cartController {
 
      static index = async(req , res) =>{
         
+      const category = await categoryModel.find();
         if(!req.session.cart){
-            res.render("frontend/pages/cart");
+            res.render("frontend/pages/cart",{category});
           
         }else{
            
             var cart = Object.values(req.session.cart.items);
-            res.render("frontend/pages/cart",{cart})
+            res.render("frontend/pages/cart",{cart,category})
         }
         
 
@@ -115,16 +118,17 @@ class cartController {
         //    checkout function 
 
         static checkout = async (req,res)=>{
-
+        
             try {
 
+              const category = await categoryModel.find();
                 if(!req.session.cart){
-                    res.render("frontend/pages/cart");
+                    res.render("frontend/pages/cart",{category});
                   
                 }else{
 
                     var cart = Object.values(req.session.cart.items);
-                    await res.render("frontend/pages/checkout",{cart});
+                    await res.render("frontend/pages/checkout",{cart,category});
                   
                 }
                
