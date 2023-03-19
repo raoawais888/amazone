@@ -11,30 +11,32 @@
           <span> Email : demo@gmail.com </span>
         </a>
       </div>
-      <from class="search_form">
+      <form class="search_form" method="POST" action="/search" id="search_form_submit">
         <div class="input-group">
  <div class="input-group-btn search-panel">
   <button type="button" class="btn btn-default dropdown-toggle all_btn" data-toggle="dropdown">
     <span id="search_concept">All</span> <span class="caret"></span>
-  </button>
+  </button> 
   <ul class="dropdown-menu scrollable-dropdown" role="menu">
-    <li><a href="#">Shirt</a></li>
-    <li><a href="#">Phone</a></li>
-    <li><a href="#">Tv</a></li>
+      
+      <% category.forEach(data=>{ %>
     
+          <li><a href="$"> <%= data.name %> </a></li>
+
+        <% }) %>
     
   </ul>
  </div>
- <input type="hidden" name="search_param" value="all" id="search_param">
- <input type="text" class="form-control" name="x" id="search" placeholder="Search">
+ <input type="hidden" name="category" value="all" id="search_param">
+ <input type="text" class="form-control" name="search" id="search" placeholder="Search" required>
  
  
-          <button class="" type="submit">
+          <button class="search_btn" type="submit">
             <i class="fa fa-search" aria-hidden="true"></i>
           </button>
      
 </div>
-   </from>
+   </form>
       
       <div class="user_option_box">
         

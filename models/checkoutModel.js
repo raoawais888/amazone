@@ -10,7 +10,7 @@ const checkout =  mongoose.Schema({
    country:{type:String, required:true, trim:true},
    state:{type:String, required:true, trim:true},
    zip:{type:Number, required:true, trim:true},
-   orderNo:{type:Number, required:true, trim:true},
+   orderNo:{type:Number, required:true, trim:true , unique:true},
    user_id :{type:mongoose.Types.ObjectId , ref:"user"},
    created_at:{type:Date , default:Date.now()}
 

@@ -17,7 +17,7 @@ const  session = require("express-session");
 const cookieParser =   require("cookie-parser");
 const cors = require("cors");
 const  MongoStore =  require( "connect-mongo") ;
-const LocalPassport  =  require("./config/authConfig.js");
+
 // const GoogleConfig = require('./config/googleConfig.js');
 const app = express();
 const port = process.env.PORT;
@@ -47,7 +47,7 @@ app.use(
 );
 
 
-
+const LocalPassport  =  require("./config/authConfig.js");
 LocalPassport(passport);
 
 // GoogleConfig(passport);
@@ -93,15 +93,19 @@ app.use(passport.session());
 
 
 
-app.use(flash());
 
 
 
 app.use((req, res, next) => {
-  res.locals.message = req.flash();
   res.locals.session = req.session;
   res.locals.user = req.user;
   
+  next();
+});
+
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.message = req.flash();
   next();
 });
 

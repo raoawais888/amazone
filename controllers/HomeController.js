@@ -1,6 +1,8 @@
 
 const productModel = require ("../models/productModel.js");
-
+const orderModel = require("../models/orderModel.js");
+const categoryModel = require("../models/categoryModel");
+const moment  = require("moment");
 class HomeController {
   static index = async (req, res) => {
 
@@ -9,34 +11,39 @@ class HomeController {
 
     const product = await productModel.find();
     const latest_product = await productModel.find().sort('-created_at').limit(10);
-   
+    const category = await categoryModel.find();
+     const active = 'home';
 
-    res.render("frontend/pages/home",{product , latest_product});
+    res.render("frontend/pages/home",{product , latest_product,category,active});
   };
 
   static about = async (req, res) => {
-    res.render("frontend/pages/about");
+    const category = await categoryModel.find();
+    res.render("frontend/pages/about",{category});
   };
 
   static product = async (req, res) => {
      
     const product = await productModel.find();
-    res.render("frontend/pages/product",{product});
+    const category = await categoryModel.find();
+    res.render("frontend/pages/product",{product,category});
   };
 
   static product_detail = async (req, res) => {
      const id = req.params.id;
      const detail = await productModel.findById({_id:id})
-   
-    res.render("frontend/pages/product_detail",{detail:detail});
+     const category = await categoryModel.find();
+    res.render("frontend/pages/product_detail",{detail:detail,category});
   };
 
   static why = async (req, res) => {
-    res.render("frontend/pages/why");
+    const category = await categoryModel.find();
+    res.render("frontend/pages/why",{category});
   };
 
   static testimonial = async (req, res) => {
-    res.render("frontend/pages/testimonial");
+    const category = await categoryModel.find();
+    res.render("frontend/pages/testimonial",{category});
   };
   static dashboard = async (req, res) => {
     await res.render("vendor/pages/dashboard");
@@ -46,8 +53,62 @@ class HomeController {
   };
 
   static order = async (req, res) => {
-    await res.render("frontend/pages/order");
+
+    const user_id = req.user._id;
+    const category = await categoryModel.find();
+    const order = await orderModel.find({user_id:user_id}).sort({'created_at':-1});
+    await res.render("frontend/pages/order",{order,category});
   };
+
+  static orderDetail = async (req,res)=>{
+
+    const order = req.params.order;
+    const category = await categoryModel.find();
+      const order_detail = await orderModel.findOne({orderNo:order});
+      const cart = Object.values(order_detail.item.items);
+
+    
+      const userDetail = req.user;
+      const cartSession =order_detail.item;
+  
+      let CurrentDate = moment().format('YYYY-MM-DD');
+       res.render("frontend/pages/orderDetail",{order,order_detail,cart,userDetail,cartSession,CurrentDate,category});
+
+ 
+
+
+  }
+
+
+  static search = async(req,res)=>{
+    try {
+      const category = await categoryModel.find();
+       const{categoryS,search} = req.body;
+      
+      const categorySearch = await categoryModel.find({name:categoryS});
+      const cat_id = await categorySearch._id;
+     const product = productModel.find({$or:[{category: cat_id},{name:search}]}, function(err, product) 
+ {
+    if (err)
+    {
+        res.send(err);
+    }
+       
+       res.render("frontend/pages/product_search",{product,search,category});
+
+ });
+
+     
+
+      
+         
+
+
+    } catch (error) {
+      
+      console.log(error);
+    }
+  }
 }
 
 module.exports =  HomeController;

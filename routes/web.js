@@ -5,6 +5,7 @@ const authController =  require("../controllers/authController.js");
 const cartController =  require("../controllers/cartController.js");
 const ensureAuthenticated =  require("../middleware/googleAuthMiddleware.js");
 const checkoutController =  require("../controllers/checkoutController.js");
+const guest = require("../middleware/Guest.js");
 
 
 
@@ -17,17 +18,19 @@ router.get("/why", HomeController.why);
 router.get("/testimonial", HomeController.testimonial);
 router.get("/privacy-policy", HomeController.privacy);
 router.get("/order", HomeController.order);
+router.get("/order_detail/:order", HomeController.orderDetail);
 router.get("/cart", cartController.index);
 router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
 router.post("/delete_Cart", cartController.deleteCart);
 router.get("/checkout", cartController.checkout);
 router.post("/checkout", checkoutController.checkout);
-router.get("/send", cartController.send);
+router.get("/thankyou", checkoutController.thankyou);
+router.post("/search",HomeController.search);
 
-router.get("/register", authController.register);
+router.get("/register",guest, authController.register);
 router.post("/register", authController.store);
-router.get("/login",authController.login);
+router.get("/login",guest,authController.login);
 router.post("/login", authController.auth);// Logout route
 router.post("/logout", authController.logout);// Logout route
 
