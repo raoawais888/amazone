@@ -8,7 +8,7 @@ const orderSchema = mongoose.Schema({
      item : {type:Object, required:true, trim:true},
      status : {type:Boolean, required:true, trim:true},
      user_id:{type:mongoose.Types.ObjectId, ref:"user"},
-      created_at:{type:Date , default:Date.now()}  
+     created_at:{type:Date , default:Date.now()}  
 })
 
 

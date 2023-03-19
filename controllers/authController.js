@@ -97,6 +97,7 @@ class authController {
               
             if(req.user.userType == 1){
 
+              res.redirect("/admin")
             }
             if(req.user.userType == 2){
                   

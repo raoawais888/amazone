@@ -54,7 +54,8 @@ class checkout {
       
        
       var maillist = [
-        'raoawais888@gmail.com'
+        'raoawais888@gmail.com',
+        useremail
       ];
 
     ejs.renderFile(__dirname + '../../views/mails/order.ejs', {cart , order, userDetail,cartSession,CurrentDate,address}, (err, data) => {
