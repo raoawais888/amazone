@@ -35,7 +35,7 @@ class productController {
                 if(!pname || !pprice || !p_cat || !qty )
                 {
                     req.flash('fail','Please Fill All Fields!')
-                    res.redirect('/add-product')
+                    res.redirect('/admin/add-product')
                 }
                 else
                 {
@@ -50,7 +50,7 @@ class productController {
                     })
                     await ProductDoc.save()
                     req.flash('success','Product Added Successfully!')
-                    res.redirect('/products')
+                    res.redirect('/admin/products')
                 }
         } catch (error) {
             console.log("Error",error)
@@ -94,11 +94,11 @@ class productController {
                     if(all_Products)
                     {
                         req.flash('success', 'Product Updated Succefully!!')
-                        res.redirect('/products')
+                        res.redirect('/admin/products')
                     }
                        else{
                         req.flash('fail','Something went Wrong Please Try Again!!')
-                        res.redirect('/products')
+                        res.redirect('/admin/products')
                     }
         } catch (error) {
             console.log("Error",error)
@@ -121,11 +121,11 @@ class productController {
                     if(product_delete)
                     {
                         req.flash('success','Product Deleted Successfully!!')
-                        res.redirect('/products')
+                        res.redirect('/admin/products')
                     }
                     else{
                         req.flash('fail','Something went Wrong Please Try Again!!')
-                        res.redirect('/products')
+                        res.redirect('/admin/products')
                     }
         } catch (error) {
             console.log("Error",error)

@@ -27,7 +27,7 @@ include("../../partials/sidebar.ejs") %>
             <div class="card-header">
               <div class="categorie-left"><h4>Categories</h4></div>
               <div class="add-new-right">
-                <a href="/add-category" class="btn btn-primary m-auto"
+                <a href="/admin/add-category" class="btn btn-primary m-auto"
                   >Add New</a
                 >
               </div>
@@ -47,7 +47,7 @@ include("../../partials/sidebar.ejs") %>
                     <td><%= category.name %></td>
                     <td>
                       <img
-                        src="uploads/<%= category.image %>"
+                        src="/uploads/<%=category.image %>"
                         height="40px"
                         width="40px"
                         alt=""
@@ -56,12 +56,12 @@ include("../../partials/sidebar.ejs") %>
 
                     <td>
                       <a
-                        href="/edit-category/<%= category._id%>"
+                        href="/admin/edit-category/<%= category._id%>"
                         class="btn btn-primary"
                         >Edit</a
                       >
                       <a
-                        href="/delete-category/<%= category._id%>"
+                        href="/admin/delete-category/<%= category._id%>"
                         class="btn btn-danger"
                         >Delete</a
                       >

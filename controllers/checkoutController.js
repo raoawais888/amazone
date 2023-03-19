@@ -54,7 +54,8 @@ class checkout {
       
        
       var maillist = [
-        'raoawais888@gmail.com'
+        'raoawais888@gmail.com',
+        useremail
       ];
 
     ejs.renderFile(__dirname + '../../views/mails/order.ejs', {cart , order, userDetail,cartSession,CurrentDate,address}, (err, data) => {
@@ -77,7 +78,7 @@ class checkout {
             } else {
                
               delete  req.session.cart;
-              req.flash("sucsess","Thank You For The Order")
+              req.flash("sucsess","Thank You For The Order d")
               res.redirect("/thankyou");
                 
             

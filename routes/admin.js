@@ -3,6 +3,7 @@ const  upload = require  ("../config/multerConfig.js");
 const adminController = require("../controllers/admin/adminController.js");
 const  categoryController = require ("../controllers/admin/categoryController.js");
 const  productController =  require("../controllers/admin/productController.js");
+const  orderController =  require("../controllers/admin/orderController.js");
 const  adminMiddleware  = require ("../middleware/adminMiddleware.js");
 const router = express.Router();
 
@@ -24,5 +25,12 @@ router.post("/add-product", upload.single("productImg"),productController.storeP
 router.get("/edit-product/:id", productController.editProduct);
 router.post("/edit-product/:id", upload.single("productImg"),productController.updateProduct);
 router.get("/delete-product/:id",productController.deleteProduct);
+
+
+// order routes
+router.get("/orders",orderController.order);
+router.get("/order_detail/:order",orderController.order_detail);
+
+
 
 module.exports = router;

@@ -21,13 +21,13 @@ class categoryController {
                 var imgName = req.file
                 if (!imgName) {
                   req.flash("fail", "Please upload Image!");
-                  res.redirect("/add-category");
+                  res.redirect("/admin/add-category");
                 } else {
                   imgName = req.file.filename;
             }
                      if (!req.body.categoryName) {
                        req.flash("fail", "Please Enter Name!");
-                       res.redirect("/add-category");
+                       res.redirect("/admin/add-category");
                      } else {
                        const catDoc = categoryModel({
                          name: req.body.categoryName,
@@ -35,7 +35,7 @@ class categoryController {
                        });
                        await catDoc.save();
                        req.flash("success", "Category Added Successfully!");
-                       res.redirect("/category");
+                       res.redirect("/admin/category");
                      }
         } catch (error) {
             console.log("Error",error)
@@ -71,11 +71,11 @@ class categoryController {
                     if(updated_cat)
                     {
                         req.flash('success', 'Category Updated Succefully!!')
-                        res.redirect('/category')
+                        res.redirect('/admin/category')
                     }
                     else{
                          req.flash('fail', 'Something went wrong! Please try again!')
-                        res.redirect('/category')
+                        res.redirect('/admin/category')
                     }
         } catch (error) {
             console.log("Error",error)
@@ -98,11 +98,11 @@ class categoryController {
           if(deleted)
           {
             req.flash("success","Category Deleted Successfully!")
-            res.redirect("/category");
+            res.redirect("/admin/category");
           }
           else{
             req.flash("fail","Something went wrong! Please try again")
-            res.redirect("/category");
+            res.redirect("/admin/category");
           }
         } catch (error) {
             console.log("Error",error)
