@@ -78,7 +78,7 @@ class checkout {
             } else {
                
               delete  req.session.cart;
-              req.flash("sucsess","Thank You For The Order")
+              req.flash("sucsess","Thank You For The Order d")
               res.redirect("/thankyou");
                 
             
