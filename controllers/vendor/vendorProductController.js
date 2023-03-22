@@ -1,5 +1,5 @@
-import productModel from "../../models/productModel.js";
-import categoryModel from "../../models/categoryModel.js";
+const productModel = require( "../../models/productModel.js");
+const categoryModel = require( "../../models/categoryModel.js");
 class vendorProductController {
     static allProduct = async (req,res) => {
         try {
@@ -139,4 +139,4 @@ class vendorProductController {
         }
     }
 }
-export default vendorProductController;
+module.exports = vendorProductController;

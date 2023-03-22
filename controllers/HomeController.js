@@ -1,9 +1,14 @@
 
-import productModel from "../models/productModel.js";
+const productModel = require ("../models/productModel.js");
 
 class HomeController {
   static index = async (req, res) => {
-    res.render("frontend/pages/home");
+
+    const product = await productModel.find();
+    const latest_product = await productModel.find().sort('-created_at').limit(10);
+   
+
+    res.render("frontend/pages/home",{product , latest_product});
   };
 
   static about = async (req, res) => {
@@ -33,10 +38,9 @@ class HomeController {
   static dashboard = async (req, res) => {
     await res.render("vendor/pages/dashboard");
   };
-  static search = async (req,res) => {
-    console.log(req.body);
-    return false;
-  }
+  static privacy = async (req, res) => {
+    await res.render("vendor/pages/privacy_policy");
+  };
 }
 
-export default HomeController;
+module.exports =  HomeController;

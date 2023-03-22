@@ -1,25 +1,45 @@
 <%- include('../partials/header.ejs')%>
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-md-4 mx-auto login_box"> 
+      
+  
 <form method="post">
-  <div class="container">
+
+
+     
     <% if(message.success){ %>
     <div class="alert alert-success"><%= message.success %></div>
     <% }else if(message.fail) { %>
     <div class="alert alert-danger"><%= message.fail %></div>
     <% } %>
+
+      <% if(message.error) {%>
+        <div class="alert alert-danger"><%= message.error %></div>
+
+      <% } %>
     <h1>Login</h1>
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" />
+    <input type="text" class="form-control" placeholder="Enter Email" name="email" id="email" />
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="pass" id="pass" />
+    <input type="password" class="form-control"  placeholder="Enter Password" name="pass" id="pass" />
+    <button type="submit" class="log_btn d-block w-100">Login</button> 
+    <a href="/auth/facebook" class="loginBtn loginBtn--facebook">
+      Login with Facebook
+    </a>
+    
+    <a href="/auth/google" class="loginBtn loginBtn--google">
+      Login with Google
+    </a>
+ 
+ 
+    <p>Not a member ? <a href="/register" class="anchor_btn">Sign Up</a>.</p>
 
-    <hr />
-    <button type="submit" class="registerbtn">Login</button>
-  </div>
-
-  <div class="container signin">
-    <p>Not a member ? <a href="/register">Sign Up</a>.</p>
-  </div>
 </form>
+</div>
+</div>
+</div>
 
 <%- include('../partials/footer.ejs'); %>

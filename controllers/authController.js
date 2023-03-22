@@ -1,6 +1,7 @@
-import userModel from "../models/userModel.js";
-import bcrypt from "bcrypt";
-import validator from "validator";
+const userModel = require( "../models/userModel.js");
+const bcrypt = require( "bcrypt");
+const validator = require( "validator");
+const passport = require( "passport");
 class authController {
   static register = async (req, res) => {
     try {
@@ -34,7 +35,7 @@ class authController {
       } else {
         const hashPassword = await bcrypt.hash(pass, 12);
         const userDoc = userModel({
-          userName: name,
+          name: name,
           email: email,
           password: hashPassword,
         });
@@ -53,50 +54,65 @@ class authController {
       console.log("Error", error);
     }
   };
-  static auth = async (req, res) => {
+
+
+  static auth =  (req, res , next) => {
     try {
+
+
       const { email, pass } = req.body;
       if (!email || !pass) {
         req.flash("fail", "Please Fill all fields!");
         res.redirect("/login");
-      } else if (!validator.isEmail(email)) {
+      } 
+
+      if (!validator.isEmail(email)) {
         req.flash("fail", "Please Enter valid Email!");
         res.redirect("/login");
-      } else {
-        const result = await userModel.findOne({ email: email });
-        if (result != null) {
-          const isMatch = await bcrypt.compare(pass, result.password);
-          if (isMatch) {
-            req.session.user = result;
-            if(result.userType == 1)
-            {
-              res.redirect("/admin");
-            }else{
-                res.redirect("/vendor");
-            }
-              // res.locals.user = req.session.user;
-              // console.log(res.locals.user)
-            
-          } else {
-            req.flash("fail", "Email or Password is incorrecet!!");
-            res.redirect("/login");
-          }
-        } else {
-          req.flash("fail", "Email is not Registerd!!");
-          res.redirect("/login");
+      } 
+        
+      passport.authenticate('local',(err,user,info)=>{
+         
+       if(err){
+        req.flash("error","something Wrong");
+        next(err);
+       }   
+      
+        if(!user){
+          req.flash("error","Incorrect Username Or password");
+          res.redirect("/login")
         }
-      }
+           
+        req.logIn(user,(err)=>{
+
+          console.log(user);
+          
+          //  if(err){
+          //   req.flash("error",info.message);
+          //   next(err);
+          //  }
+
+          //   res.redirect("/");
+
+
+        })
+
+
+
+
+
+
+      }) (req,res,next);
+
+
+
+
     } catch (error) {
       console.log("Error", error);
     }
   };
-  static logout = async (req, res) => {
-    await req.session.destroy(() => {
-      console.log("Session Destroyed");
-    });
-    res.redirect("/login");
-  };
+ 
   
 }
 
-export default authController;
+ module.exports = authController;

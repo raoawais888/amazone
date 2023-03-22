@@ -1,4 +1,5 @@
-import product from "../models/productModel.js"
+const product = require( "../models/productModel.js");
+const transporter = require( "../config/emailSend.js");
 class cartController {
 
      static index = async(req , res) =>{
@@ -153,15 +154,14 @@ class cartController {
 
                     const qty = cart.items[id].qty;
                     const price =  cart.items[id].item.price * qty;
-                       const total_qty = cart.items.totalQty - qty ;
-                    cart.items
+                    const total_qty = cart.totalQty = cart.totalQty - qty;
+                    const totalPrice =  cart.totalPrice = cart.totalPrice - price;
+                    delete cart.items[id];
+                    res.send({price : totalPrice, qty: total_qty});
 
                    }
             
-            // console.log(cart.items);
-            // delete cart.items[id];
-            //   console.log(cart.items[id])
-            // console.log(cart);   
+             
                 
           
  
@@ -173,8 +173,30 @@ class cartController {
      }
 
 
+     static send = async (req , res)=>{
+         
+        try {
+
+              // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: "leadtest77@gmail.com", // sender address
+    to: "raoawais888@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+            
+        } catch (error) {
+            
+            console.log(error);
+        }
+        
+     }
+
 
     }
 
 
-export default cartController
+ module.exports =   cartController

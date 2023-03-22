@@ -1,5 +1,5 @@
-import categoryModel from "../../models/categoryModel.js";
-import fs from 'fs'
+const  categoryModel = require( "../../models/categoryModel.js");
+const  fs = require( 'fs');
 class categoryController {
     static allCategory = async (req,res) => {
         try {
@@ -110,4 +110,4 @@ class categoryController {
     }
 }
 
-export default categoryController
+module.exports = categoryController
