@@ -48,12 +48,12 @@
                                 
                                 <% if(user){ %>
 
-                                <button  onclick="addTOCart()"  data-product="<%= JSON.stringify(detail) %>" id="add_cart_btn" class="btn btn-outline-warning btn-long cart">Add to
+                                <button  onclick="addTOCart()"  data-product="<%= JSON.stringify(detail) %>" id="add_cart_btn" class="btn action_btn btn-outline-warning btn-long cart">Add to
                                      Cart</button>
                                
                                      <% }else{ %>
 
-                                        <button class="btn btn-outline-warning btn-long cart" id="login_show">Add to
+                                        <button class="btn btn-outline-warning action_btn btn-long cart" id="login_show">Add to
                                             Cart</button>
 
 
@@ -69,20 +69,7 @@
                                     <span class="ml-1">Delivery from sweden, 15-45 days</span> </div>
                                 <div class="mt-2"> <span class="font-weight-bold">Description</span>
                                     <p><%= detail.desc %></p>
-                                    <div class="bullets">
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">Best in Quality</span> </div>
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">Anti-creak joinery</span> </div>
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">Sturdy laminate surfaces</span> </div>
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">Relocation friendly design</span> </div>
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">High gloss, high style</span> </div>
-                                        <div class="d-flex align-items-center"> <span class="dot"></span> <span
-                                                class="bullet-text">Easy-access hydraulic storage</span> </div>
-                                    </div>
+                               
                                 </div>
                               
                                
@@ -95,9 +82,71 @@
 
 
         </section>
-
-
         <!-- end product detail section -->
+        <% if(user){ %>
+        <section class="product-review py-5">
+        <br><br>
+        <h3 class="heading">Add Your Review</h3>
+         <% if(message.success){ %>
+            <div class="alert alert-success"><%= message.success %></div>
+            <% } %>
+         <div class="container">
+           <form method="post" action="/submit-review">
+            <input type="hidden" name="user" value="<%= user._id %>">
+            <input type="hidden" name="product" value="<%= detail._id %>">
+             <div class="form-group">
+               <textarea class="form-control status-box" rows="3" placeholder="Enter your comment here..." name="comment"></textarea>
+             </div>
+           <div class="button-group pull-right">
+             <button type="submit" class="btn btn-primary">Post</button>
+           </div>
+           </form>
+         </div>
+         </section>
+         <% } %>
+         <% if(comments){ %>
+      <section id="testimonials">
+        <!--heading--->
+        <div class="testimonial-heading">
+            <span>Product Reviews</span>
+        </div>
+        <!--testimonials-box-container------>
+        <div class="testimonial-box-container">
+            <!--BOX-1-------------->
+               <% comments.forEach(comment => { %>  
+            <div class="testimonial-box">
+                <!--top------------------------->
+                <div class="box-top">
+                    <!--profile----->
+                    <div class="profile">
+                        <!--img---->
+                        <div class="profile-img">
+                            <img src="/images/profile.png" />
+                        </div>
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong><%= comment.user.name %></strong>
+                            <!-- <span>@liammendes</span> -->
+                        </div>
+                    </div>
+                    <!--reviews------>
+                    <!-- <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div> -->
+                </div>
+                <!--Comments---------------------------------------->
+                <div class="client-comment">
+                    <p><%= comment.comment %></p>
+                </div>
+            </div>
 
-
+             <% }) %>
+         
+        </div>
+      </section>
+        <% } %>
         <%- include("../partials/footer.ejs") %>

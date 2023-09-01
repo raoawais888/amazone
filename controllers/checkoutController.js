@@ -5,6 +5,7 @@ const categoryModel = require( "../models/categoryModel.js");
 const ejs = require('ejs');
 const transporter = require("../config/emailSend.js");
 const moment  = require("moment");
+const path = require('path');
 
 class checkout {
 
@@ -53,22 +54,23 @@ class checkout {
       let CurrentDate = moment().format('YYYY-MM-DD');
       
        
-      var maillist = [
-        'raoawais888@gmail.com',
-        useremail
-      ];
+    
 
-    ejs.renderFile(__dirname + '../../views/mails/order.ejs', {cart , order, userDetail,cartSession,CurrentDate,address}, (err, data) => {
+      const templatePath = path.join(process.cwd(), "views/mails/order.ejs")
+    
+    ejs.renderFile(templatePath, {cart , order, userDetail,cartSession,CurrentDate,address}, (err, data) => {
         if (err) {
           console.log(err);
           res.status(500).send(err);
         } else {
           // Send the email
           const mailOptions = {
-            from: 'raoawais888@gmail.com',
-            to: maillist ,
-            subject: 'Order From ',
-            html: data
+           
+          from: '<info@amazon2amazon.com>', 
+          to: useremail, 
+          subject: "Order Confirmation", 
+          html: data, 
+        
           };
     
           transporter.sendMail(mailOptions, (error, info) => {

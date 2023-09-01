@@ -35,6 +35,7 @@ class orderController {
               });
 
             
+               console.log(order_detail);
          
               const cart = Object.values(order_detail.item.items);
         

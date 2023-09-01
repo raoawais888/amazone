@@ -1,14 +1,11 @@
 <div class="header_top">
-  <div class="container-fluid">
+  <div class="container">
     <div class="top_nav_container">
       <div class="contact_nav">
-        <a href="">
-          <i class="fa fa-phone" aria-hidden="true"></i>
-          <span> Call : +01 123455678990 </span>
-        </a>
-        <a href="">
-          <i class="fa fa-envelope" aria-hidden="true"></i>
-          <span> Email : demo@gmail.com </span>
+        <a class="navbar-brand" href="/">
+          <span>
+           <img src="/images/logo.png" alt="" width="175">
+          </span>
         </a>
       </div>
       <form class="search_form" method="POST" action="/search" id="search_form_submit">
@@ -40,28 +37,30 @@
       
       <div class="user_option_box">
         
-        <% if(user){ %>
-          
-          <form action="/logout" method="POST" id="log_form" style="cursor: pointer; margin-bottom: 0px;" >
-            <a href="#" onclick="document.getElementById('log_form').submit()" class="account-link">
-              <i class="fa fa-user" aria-hidden="true"></i>
-                <span>Logout</a></span>
-            </a>
-          </form>
-         
-    
-         
-        <% }else{ %>
+      
 
-          <a href="/login" class="account-link">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span> Login </span>
-          </a>
-        <% } %>
+<button class="btn btn-danger  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-user" aria-hidden="true"></i>
+  </button>
+  <div class="dropdown-menu">
+   
+    <% if(user){ %>
+      <a class="dropdown-item" href="/order">Orders</a>
+      <form action="/logout" method="POST" id="log_form" style="cursor: pointer; margin-bottom: 0px;" >
+        <a href="#"  onclick="document.getElementById('log_form').submit()" class="account-link dropdown-item">Logout</a> 
+      </form>
+     
+
+     
+    <% }else{ %>
+
+      <a class="dropdown-item" href="/login">Login</a>
+      <a class="dropdown-item" href="/register">Register</a>
+   <% } %>
+  </div>
 
         <a href="/cart" class="cart-link">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-          <span> Cart </span>
           <span id="cart_counter"><%= session.cart ? session.cart.totalQty : '0' %></span>
         </a>
       </div>

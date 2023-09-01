@@ -15,8 +15,8 @@ include("../../partials/sidebar.ejs") %>
     <div class="alert alert-danger"><%= message.fail %></div>
     <% } %>
             <div class="card-body">
-              <form action="" method="post" enctype="multipart/form-data">
-                <div class="form-group">
+              <form action="" method="post" 
+                <div class="form-group mb-2">
                   <label>Category Name</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -26,19 +26,31 @@ include("../../partials/sidebar.ejs") %>
                     </div>
                     <input type="text" class="form-control" name="categoryName"/>
                   </div>
-                <div class="form-group">
-                  <label>Category Image</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fa fa-image"></i>
+
+                  <div class="form-group mb-2">
+                    <label>Select Brand</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fa fa-list-alt"></i>
+                        </div>
                       </div>
+                        <select name="brand_id"  class="form-control">
+                           <% brands.forEach((data)=>{ %>
+
+
+                    <option value="<%= data._id  %>"><%=  data.name %></option>
+
+
+                             
+                           <%  }) %>
+                        </select>
                     </div>
-                    <input type="file" class="form-control" name="categoryImg"/>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+
+
+               
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <button type="reset" class="btn btn-danger mt-3">Reset</button>
               </form>
             </div>
           </div>

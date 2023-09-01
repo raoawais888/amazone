@@ -2,18 +2,16 @@
 const productModel = require ("../models/productModel.js");
 const orderModel = require("../models/orderModel.js");
 const categoryModel = require("../models/categoryModel");
+const commentModel = require("../models/productCommentModel.js");
 const moment  = require("moment");
+const nodemailer = require ("nodemailer");
+const { use } = require("passport");
 class HomeController {
   static index = async (req, res) => {
-
-      // console.log(req.user);
-    
-
-    const product = await productModel.find();
-    const latest_product = await productModel.find().sort('-created_at').limit(10);
+    const product = await productModel.find({verified:1});
+    const latest_product = await productModel.find({verified:1}).sort('-created_at').limit(10);
     const category = await categoryModel.find();
      const active = 'home';
-
     res.render("frontend/pages/home",{product , latest_product,category,active});
   };
 
@@ -24,7 +22,7 @@ class HomeController {
 
   static product = async (req, res) => {
      
-    const product = await productModel.find();
+    const product = await productModel.find({verified:1});
     const category = await categoryModel.find();
     res.render("frontend/pages/product",{product,category});
   };
@@ -33,8 +31,21 @@ class HomeController {
      const id = req.params.id;
      const detail = await productModel.findById({_id:id})
      const category = await categoryModel.find();
-    res.render("frontend/pages/product_detail",{detail:detail,category});
+     const comments = await commentModel.find({product:detail._id}).populate('user');
+    res.render("frontend/pages/product_detail",{detail:detail,category,comments:comments});
   };
+  static review = async(req,res) => {
+      const{user,product,comment} = req.body;
+      const commentDoc = new commentModel({
+            comment:comment,
+            user:user,
+            product:product
+      });
+        await commentDoc.save();
+        req.flash('success',"Your review submited");
+        return res.redirect('back');
+  }
+
 
   static why = async (req, res) => {
     const category = await categoryModel.find();
@@ -109,6 +120,42 @@ class HomeController {
       console.log(error);
     }
   }
+
+  static mail = async (req,res)=>{
+    try {
+      
+      // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "mail.amazon2amazon.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: "info@amazon2amazon.com", // generated ethereal user
+      pass: "RCy262@f", // generated ethereal password
+    },
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false,
+    },
+  });
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <info@amazon2amazon.com>', // sender address
+    to: "raoawais888@gmail.com", // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+ 
+    } catch (error) {
+      
+      console.log(error);
+    }
+  }
+
 }
 
 module.exports =  HomeController;

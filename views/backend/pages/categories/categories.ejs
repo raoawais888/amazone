@@ -35,24 +35,20 @@ include("../../partials/sidebar.ejs") %>
             <div class="card-body p-0">
               <div class="table-responsive">
                 <table class="table table-striped table-md">
+                  
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Image</th>
+                    <th>Category Name</th>
+                    <th>Brand Name</th>
                     <th>Action</th>
                   </tr>
+
                   <% var key = 1; %> <% categories.forEach(category =>{ %>
                   <tr>
                     <td><%= key %></td>
                     <td><%= category.name %></td>
-                    <td>
-                      <img
-                        src="/uploads/<%=category.image %>"
-                        height="40px"
-                        width="40px"
-                        alt=""
-                      />
-                    </td>
+                    <td><%= category.brand.name %></td>
+                  
 
                     <td>
                       <a
