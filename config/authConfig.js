@@ -1,19 +1,22 @@
 
 
-const LocalStategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 
    const init = (passport) =>{
              
-    passport.use(new LocalStategy({usernameField:'email'},async (email,password,done)=>{
+    passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
 
         const user = await User.findOne({email:email});
+               
 
           if(!user){
 
             return done(null, false , {message:'Email Does Not Exist'});
           }
+
+           
 
             if(await bcrypt.compare(password, user.password)){
 
@@ -29,17 +32,25 @@ const bcrypt = require("bcrypt");
 
     }))
 
+
+    
     passport.serializeUser((user, done) => {
-        done(null, user._id);
-        
-    });
+      done(null, user._id);
+  });
     
     passport.deserializeUser((id, done) => {
-      User.findById(id,(err, user)=> {
-        done(err, user);
-      });
-
-    });
+      try {
+          User.findById(id, (err, user) => {
+              if (err) {
+                  done(err, null);
+              } else {
+                  done(null, user);
+              }
+          });
+      } catch (error) {
+          done(error, null);
+      }
+  });
 
 
    }

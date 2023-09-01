@@ -1,5 +1,10 @@
 <!-- info section -->
-<section class="info_section ">
+<section class="info_section">
+  <div class="scroll_div">
+    <a href="https://wa.me/+971 585822058"  target="_blank" class="text-white">    
+       <i class="fa fa-whatsapp" aria-hidden="true"></i>
+       </a>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -7,7 +12,7 @@
             <h5>
               <a href="" class="navbar-brand">
                 <span>
-                 <img src="/images/logo.jpg" alt="" width="200">
+                 <img src="/images/logo.png" alt="" width="200">
                 </span>
               </a>
             </h5>
@@ -17,7 +22,7 @@
             </p>
             <p>
               <i class="fa fa-phone" aria-hidden="true"></i>
-              +01 1234567890
+               <a href="tel:+971585822058" class="text-white">+971 585822058</a> 
             </p>
             <p>
               <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -141,6 +146,27 @@
 
 
 $(document).ready(function(){
+
+  $('.navbar-nav  li').each(function() {
+      var href = $(this).find('a').attr('href');
+      if (href === window.location.pathname) {
+      $(this).addClass('active');
+       }
+      });
+
+      $(".loader").fadeOut(3000);
+
+      $(".action_btn").on("click",function(){
+
+        $(".loader").show();
+      })
+      $(".loginBtn--google").on("click",function(){
+
+        $(".loader").show();
+      })
+      
+    
+
 
 
   $("#login_show").on("click",function(){

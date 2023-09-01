@@ -12,6 +12,22 @@ class productController {
             console.log("Error",error)
         }
     }
+    static product_verification = async(req,res) => {
+        try {
+            console.log(req.body);
+            const{value,product_id} = req.body;
+            const updated = await productModel.findByIdAndUpdate(product_id,{
+                verified:value
+            });
+            if(updated){
+                res.json({msg:'success'}); 
+            }else{
+                res.json({msg:'error'});
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
     static addProduct = async (req,res) => {
         try {
             const category= await categoryModel.find({})

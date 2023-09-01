@@ -2,8 +2,8 @@ const env  = require("dotenv");
 env.config();
 
 const passport = require('passport');
-const   Facebook  =  require('passport-facebook');
-const FacebookStrategy = Facebook.Strategy;
+// const   Facebook  =  require('passport-facebook');
+// const FacebookStrategy = Facebook.Strategy;
 
 
 const express = require( "express");
@@ -17,8 +17,8 @@ const  session = require("express-session");
 const cookieParser =   require("cookie-parser");
 const cors = require("cors");
 const  MongoStore =  require( "connect-mongo") ;
-
-// const GoogleConfig = require('./config/googleConfig.js');
+const GoogleConfig = require('./config/googleConfig.js');
+const TwitterConfig = require('./config/twitterConfig.js');
 const app = express();
 const port = process.env.PORT;
 const DB_URL = process.env.DB_URL;
@@ -49,9 +49,8 @@ app.use(
 
 const LocalPassport  =  require("./config/authConfig.js");
 LocalPassport(passport);
-
-// GoogleConfig(passport);
-
+GoogleConfig(passport);
+TwitterConfig(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());

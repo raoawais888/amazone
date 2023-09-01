@@ -1,17 +1,8 @@
-
-
-
-
-
-  const addTOCart = () =>{
-
-   
-    
-
-let notifier = new AWN();
+const addTOCart = () =>{
+ let notifier = new AWN();
 
  let cart_btn = document.querySelector("#add_cart_btn");
-  let cart_counter = document.querySelector("#cart_counter");
+ let cart_counter = document.querySelector("#cart_counter");
 
     const updateCart = (cart) =>{
       var headers = new Headers();
@@ -27,21 +18,15 @@ let notifier = new AWN();
         
            cart_counter.innerText = json.data;
            new AWN().success('Item Added in to cart', {durations: {Added: 0}})
-
-            
-     }).catch(err => {
-         
+              
+           setTimeout(()=>{
+            $(".loader").fadeOut(3000);
+           },2000)
+     }).catch(err => { 
       })
-
     }
- 
-
     let cart_data =  cart_btn.dataset.product;
-    updateCart(JSON.parse(cart_data));
- 
-
-
-  
+    updateCart(JSON.parse(cart_data)); 
 }
 
   // update cart qty code 
@@ -75,7 +60,10 @@ let notifier = new AWN();
           return resp.json();
         }).then((json) => {
 
-              
+          setTimeout(()=>{
+            $(".loader").fadeOut(3000);
+           },2000)
+          
            console.log(json.price);
              total_price.innerText = json.price;
              cart_counter.innerText = json.qty
@@ -119,6 +107,9 @@ let notifier = new AWN();
           return resp.json();
         }).then((json) => {
          console.log(json);      
+         setTimeout(()=>{
+          $(".loader").fadeOut(3000);
+         },2000)
         
             total_price.innerText = json.price;
              cart_counter.innerText = json.qty 
@@ -136,6 +127,7 @@ let notifier = new AWN();
 
 
    })
+
 
 
 

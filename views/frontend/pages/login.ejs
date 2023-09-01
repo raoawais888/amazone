@@ -15,7 +15,7 @@
 <div class="container py-5">
 
   <div class="row">
-    <div class="col-md-4 mx-auto login_box"> 
+    <div class="col-md-5 mx-auto login_box"> 
       
   
 <form method="post">
@@ -28,8 +28,8 @@
     <div class="alert alert-danger"><%= message.fail %></div>
     <% } %>
 
-      <% if(message.error) {%>
-        <div class="alert alert-danger"><%= message.error %></div>
+      <% if(typeof message_show != "undefined") {%>
+        <div class="alert alert-danger"><%= message_show%></div>
 
       <% } %>
     <h1>Login</h1>
@@ -38,18 +38,34 @@
 
     <label for="psw"><b>Password</b></label>
     <input type="password" class="form-control"  placeholder="Enter Password" name="password" id="pass" />
-    <button type="submit" class="log_btn d-block w-100">Login</button> 
+    <div class="g-recaptcha" data-sitekey="6Lcn_b0mAAAAADO487_52AVuD65Q_lsqlH8EUfy8"></div>
+    <button type="submit" class="log_btn action_btn d-block w-100">Login</button> 
     <!-- <a href="/auth/facebook" class="loginBtn loginBtn--facebook">
       Login with Facebook
     </a> -->
     
-    <!-- <a href="/auth/google" class="loginBtn loginBtn--google">
+    <a href="/auth/google" class="loginBtn  loginBtn--google">
       Login with Google
-    </a> -->
+    </a>
+    <a href="/auth/twitter" class="loginBtn  loginBtn--google">
+      Login with Twitter
+    </a>
  
  
-    <p>Not a member ? <a href="/register" class="anchor_btn">Sign Up</a>.</p>
+    <div class="row">
+      <div class="col-md-6 mt-2">
+        <p class="mb-0" style="font-size: 14px;">Not a member ?  <a href="/register" class="anchor_btn">Sign Up</a>.</p>
+  
+      </div>
+      <div class="col-md-6 mt-2">
+        <p class="mb-0" style="font-size: 14px;">Forgot Password?  <a href="/forgot_password" class="anchor_btn">Click Here</a>.</p>
+      </div>
 
+     
+      
+      
+    </div>
+    
 </form>
 </div>
 </div>

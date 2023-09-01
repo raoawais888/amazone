@@ -13,6 +13,19 @@
           ><i data-feather="monitor"></i><span>Dashboard</span></a
         >
       </li>
+
+      <% if(locals.user.userType == 1) {%>
+        <li class="dropdown">
+          <a href="/admin/brand" class="menu-toggle nav-link has-dropdown"
+            ><i data-feather="grid"></i><span>Brands</span></a
+          >
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="/admin/brand">All Brands</a></li>
+            <li><a class="nav-link" href="/admin/add-brand">Add New Brand</a></li>
+          </ul>
+        </li>
+        <% } %>
+        
       <% if(locals.user.userType == 1) {%>
       <li class="dropdown">
         <a href="/admin/category" class="menu-toggle nav-link has-dropdown"
@@ -24,6 +37,7 @@
         </ul>
       </li>
       <% } %>
+     
       <li class="dropdown">
         <a href="/admin/products" class="menu-toggle nav-link has-dropdown"
           ><i data-feather="package"></i><span>Products</span></a
@@ -37,6 +51,11 @@
       <li class="dropdown">
         <a href="/admin/orders" class="nav-link"
           ><i data-feather="monitor"></i><span>Orders</span></a
+        >
+      </li>
+      <li class="dropdown">
+        <a href="/admin/users" class="nav-link"
+          ><i data-feather="users"></i><span>Users</span></a
         >
       </li>
     </ul>

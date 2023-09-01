@@ -27,13 +27,27 @@ router.get("/checkout", cartController.checkout);
 router.post("/checkout", checkoutController.checkout);
 router.get("/thankyou", checkoutController.thankyou);
 router.post("/search",HomeController.search);
+router.get("/mail",HomeController.mail);
+router.post("/submit-review",HomeController.review);
 
 router.get("/register",guest, authController.register);
 router.post("/register", authController.store);
+router.get("/confirm_email/:id", authController.confrim_email);
+router.get("/forgot_password", authController.forgot_password);
+router.post("/forgot_password", authController.forgot_password_store);
+router.get("/reset_password/:id", authController.reset_password);
+router.post("/reset_password/:id", authController.reset_password_store);
 router.get("/login",guest,authController.login);
 router.post("/login", authController.auth);// Logout route
 router.post("/logout", authController.logout);// Logout route
 
+
+//Twitter Auth
+router.get('/auth/twitter', passport.authenticate('twitter'));
+router.get('/auth/twitter/callback', passport.authenticate('twitter', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+}));
 
 
 
