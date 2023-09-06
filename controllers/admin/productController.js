@@ -1,9 +1,12 @@
 const  productModel = require( "../../models/productModel.js");
 const  categoryModel = require( "../../models/categoryModel.js");
 const  fs = require( 'fs');
+const BrandModel = require("../../models/brandModel.js");
 class productController {
     static allProduct = async (req,res) => {
         try {
+
+            
 
             const Products = await productModel.find().populate('category');
             res.render("backend/pages/products/products",{products:Products})

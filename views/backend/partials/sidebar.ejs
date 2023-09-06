@@ -37,6 +37,17 @@
         </ul>
       </li>
       <% } %>
+      <% if(locals.user.userType == 1) {%>
+      <li class="dropdown">
+        <a href="/admin/models" class="menu-toggle nav-link has-dropdown"
+          ><i data-feather="grid"></i><span>Models</span></a
+        >
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="/admin/model">All Models</a></li>
+          <li><a class="nav-link" href="/admin/add-model"> Add New Model</a></li>
+        </ul>
+      </li>
+      <% } %>
      
       <li class="dropdown">
         <a href="/admin/products" class="menu-toggle nav-link has-dropdown"

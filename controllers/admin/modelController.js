@@ -1,90 +1,134 @@
+const  categoryModel = require( "../../models/categoryModel.js");
 const  brandModel = require( "../../models/brandModel.js");
+const  mobileModel = require( "../../models/mobileModel.js");
 const  fs = require( 'fs');
 class modelController {
-    static allBrand = async (req,res) => {
+    
+    
+    
+    static allModel = async (req,res) => {
         try {
-                const brands = await brandModel.find({});
-                res.render("backend/pages/brands/brands",{brands});
+                const models= await mobileModel.find({}).populate('category').populate('brand');
+               
+                
+                res.render("backend/pages/models/models",{models});
         } catch (error) {
             console.log("Error",error)
         }
     }
-    static addBrand = async (req,res) => {
+
+
+
+
+
+    static addModel = async (req,res) => {
         try {
-            res.render("backend/pages/brands/addBrand");
+        const brands = await brandModel.find({});
+        const categories = await categoryModel.find({});
+            res.render("backend/pages/models/addModel",{brands,categories});
         } catch (error) {
             console.log("Error",error)
         }
     }
-    static storeBrand = async (req,res) => {
-        try {
-                var imgName = req.file
-                if (!imgName) {
-                  req.flash("fail", "Please upload Image!");
-                  res.redirect("/admin/add-brand");
-                } else {
-                  imgName = req.file.filename;
+
+
+     static categoryFetch = async (req,res)=>{
+
+            try {
+                const {brand} = req.body;
+                 
+                   const categories = await categoryModel.find({brand:brand});
+                     
+                   if(categories){
+                   
+                        res.json({
+                            msg:"fetch",
+                           data:categories,
+                        })
+                      
+                   }
+
+                
+            } catch (error) {
+                console.log(error);
             }
-                     if (!req.body.categoryName) {
-                       req.flash("fail", "Please Enter Name!");
-                       res.redirect("/admin/add-brand");
-                     } else {
-                       const catDoc = brandModel({
-                         name: req.body.categoryName,
-                         image: imgName
+     
+    }
+
+
+
+    static storeModel = async (req,res) => {
+        try {
+
+
+               console.log(req.body);
+
+                   const {brand_id , category, model} = req.body;  
+                   
+            const cat_check = await brandModel.findOne({'category':category, brand:brand_id , name:model});
+                                  
+                    // console.log(cat_check);
+                   
+                   
+                     if (!model) {
+                       req.flash("fail", "Please Enter model!");
+                       res.redirect("/admin/add-model");
+                     }else if(cat_check) {
+
+                        req.flash("fail", "Model Already Exist!");
+                        res.redirect("/admin/add-model");
+                     }else {
+                       const catDoc = mobileModel({
+                         category: category,
+                          brand:brand_id,
+                          name:model
                        });
                        await catDoc.save();
-                       req.flash("success", "Brand Added Successfully!");
-                       res.redirect("/admin/brand");
+                       req.flash("success", "Model Added Successfully!");
+                       res.redirect("/admin/model");
                      }
         } catch (error) {
             console.log("Error",error)
         }
     }
-    static editBrand = async (req,res) => {
+    static editModel = async (req,res) => {
         try {
-            const brand= await brandModel.findById({_id:req.params.id})
+            const cate = await categoryModel.findById({_id:req.params.id}).populate('brand');
+            const brands = await brandModel.find({});
            
-            res.render("backend/pages/brands/editBrand",{brand});
+            res.render("backend/pages/categories/editCategory",{category:cate, brands});
         } catch (error) {
             console.log("Error",error)
         }
     }
-    static updateBrand = async (req,res) => {
+    static updateModel = async (req,res) => {
         try {
-                const {cat_id,categoryName,old_image} = req.body
-                var updated_image = old_image
-                if(req.file){
-                        updated_image = req.file.filename
-                      await fs.unlink(`public/uploads/${old_image}`,(error)=>{
-                    if(error){
-                        console.log(error);
-                    }else{
-                        console.log("deleted");
-                    }
-                })
-                }
-                  const updated_cat = await  brandModel.findByIdAndUpdate(cat_id,{
+            console.log(req.body);
+
+                const {cat_id,categoryName , brand} = req.body
+                
+               
+                  const updated_cat = await  categoryModel.findByIdAndUpdate(cat_id,{
                         name:categoryName,
-                        image:  updated_image,
+                        brand:brand,
                     });
                     if(updated_cat)
                     {
-                        req.flash('success', 'Brand Updated Succefully!!')
-                        res.redirect('/admin/brand')
+                        req.flash('success', 'Category Updated Succefully!!')
+                        res.redirect('/admin/category')
                     }
                     else{
                          req.flash('fail', 'Something went wrong! Please try again!')
-                        res.redirect('/admin/brand')
+                        res.redirect('/admin/category')
                     }
         } catch (error) {
             console.log("Error",error)
         }
     }
-    static deleteBrand = async (req,res) => {
+    static deleteModel = async (req,res) => {
         try {
             const cId = req.params.id;
-            const category = await brandModel.findById({_id:cId})
+            const category = await categoryModel.findById({_id:cId})
                   if(category.image){        
                     await fs.unlink(`public/uploads/${category.image}`,(error)=>{
                     if(error){
@@ -94,15 +138,15 @@ class modelController {
                     }
                 })
             }
-          const deleted = await brandModel.findByIdAndDelete({_id:cId});
+          const deleted = await categoryModel.findByIdAndDelete({_id:cId});
           if(deleted)
           {
-            req.flash("success","Brand Deleted Successfully!")
-            res.redirect("/admin/brand");
+            req.flash("success","Category Deleted Successfully!")
+            res.redirect("/admin/category");
           }
           else{
             req.flash("fail","Something went wrong! Please try again")
-            res.redirect("/admin/brand");
+            res.redirect("/admin/category");
           }
         } catch (error) {
             console.log("Error",error)
