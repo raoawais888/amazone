@@ -6,15 +6,7 @@ class cartController {
 
      static index = async(req , res) =>{
         
-      const category = await categoryModel.find();
-        if(!req.session.cart){
-            res.render("frontend/pages/cart",{category});
-          
-        }else{
-           
-            var cart = Object.values(req.session.cart.items);
-            res.render("frontend/pages/cart",{cart,category})
-        }
+     
         
 
        

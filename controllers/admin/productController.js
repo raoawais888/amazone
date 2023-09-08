@@ -2,6 +2,7 @@ const  productModel = require( "../../models/productModel.js");
 const  categoryModel = require( "../../models/categoryModel.js");
 const  fs = require( 'fs');
 const BrandModel = require("../../models/brandModel.js");
+const { product } = require("../HomeController.js");
 class productController {
     static allProduct = async (req,res) => {
         try {
@@ -9,6 +10,7 @@ class productController {
             
 
             const Products = await productModel.find().populate('category');
+            console.log(Products)
             res.render("backend/pages/products/products",{products:Products})
 
         } catch (error) {
@@ -33,15 +35,15 @@ class productController {
     }
     static addProduct = async (req,res) => {
         try {
-            const category= await categoryModel.find({})
-            res.render("backend/pages/products/addProduct",{category:category})
+            const brands= await BrandModel.find({})
+            res.render("backend/pages/products/addProduct",{brands})
         } catch (error) {
             console.log("Error",error)
         }
     }
     static storeProduct = async (req,res) => {
         try {
-            const {pname,pprice,qty,pdesc,p_cat} = req.body
+            const {pname,pprice,qty,pdesc,p_cat , brand , model} = req.body
                var img = req.file
                 if(!img){
                     req.flash('fail','Please upload Image!')
@@ -51,7 +53,7 @@ class productController {
                     img = req.file.filename
                 }
                 
-                if(!pname || !pprice || !p_cat || !qty )
+                if(!pname || !pprice || !p_cat || !qty  || !model || !brand )
                 {
                     req.flash('fail','Please Fill All Fields!')
                     res.redirect('/admin/add-product')
@@ -62,6 +64,8 @@ class productController {
                         name: pname,
                         price: pprice,
                         category:p_cat,
+                        brand:brand,
+                        model:model,
                         stock:qty,
                         image:img,
                         desc:pdesc

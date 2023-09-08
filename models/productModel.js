@@ -7,6 +7,8 @@ const ProductSchema = mongoose.Schema({
     stock: {type:Number, require:true, trim:true},
     verified:{type:Number,default:0},
     category: {type: mongoose.Types.ObjectId, ref: 'productCategory'},
+    brand: {type: mongoose.Types.ObjectId, ref: 'brand'},
+    model: {type: mongoose.Types.ObjectId, ref: 'mobile'},
     user: {type: mongoose.Types.ObjectId, ref: 'user'},
     desc: {type: String},
     created_at: {type:Date, default:Date.now}
