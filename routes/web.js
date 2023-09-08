@@ -14,12 +14,13 @@ router.get("/", HomeController.index);
 router.get("/about", HomeController.about);
 router.get("/product", HomeController.product);
 router.get("/product-detail/:id", HomeController.product_detail);
-router.get("/why", HomeController.why);
+router.get("/model/:id", HomeController.model_product);
+router.get("/brands", HomeController.brands);
 router.get("/testimonial", HomeController.testimonial);
 router.get("/privacy-policy", HomeController.privacy);
 router.get("/order", HomeController.order);
 router.get("/order_detail/:order", HomeController.orderDetail);
-router.get("/cart", cartController.index);
+router.get("/cart", HomeController.cart);
 router.post("/add-cart", cartController.cart);
 router.post("/update-cart", cartController.updateCart);
 router.post("/delete_Cart", cartController.deleteCart);
@@ -29,15 +30,16 @@ router.get("/thankyou", checkoutController.thankyou);
 router.post("/search",HomeController.search);
 router.get("/mail",HomeController.mail);
 router.post("/submit-review",HomeController.review);
+router.post("/search_product",HomeController.search_product);
 
-router.get("/register",guest, authController.register);
+router.get("/register",guest, HomeController.register);
 router.post("/register", authController.store);
 router.get("/confirm_email/:id", authController.confrim_email);
 router.get("/forgot_password", authController.forgot_password);
 router.post("/forgot_password", authController.forgot_password_store);
 router.get("/reset_password/:id", authController.reset_password);
 router.post("/reset_password/:id", authController.reset_password_store);
-router.get("/login",guest,authController.login);
+router.get("/login",guest,HomeController.login);
 router.post("/login", authController.auth);// Logout route
 router.post("/logout", authController.logout);// Logout route
 

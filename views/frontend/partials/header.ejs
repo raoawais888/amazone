@@ -65,13 +65,167 @@
           <!-- top partial add  -->
 
       <div class="header_bottom">
-        <div class="container">
+       
            
             <!-- Navbar partial addd  -->
             <%- include("./nav.ejs")  %>
             <!-- Navbar partial addd  -->
 
-        </div>
+           
+
       </div>
     </header>
+
+
+     <!-- slider .............................. -->
+                   
+            <!-- slider .............................. -->
+    <section class="slider_section">
+
+      <div class="container-fluid p-0">
+       <div class="row">
+  <div class="col-md-3 p-0">
+
+   <div class="border-bottom mb-4 pb-4">
+    
+
+     <div class="cat-box">
+          
+
+         <!-- loop brands  -->
+         <ul class=" category">
+
+           <% data.forEach((brand,index) =>{ %>
+           <li class="cat-p ">
+             <div><a href="#"><%=  brand.brand.name  %></a></div>
+
+             <% brand.brand.category.forEach((category , i) =>{ %>
+             <div class="tecihone">
+              
+               <div class="juery">
+                 <ul>
+                   <div class="will2px"><a href="#"><%= category.name %></a><span class="category-num">( <a href="#">2</a> )</span></div>
+                 
+                    <% category.model.forEach((model , i)=>{ %>
+                   <li><a href="/model/<%= model._id%>"><%= model.name %></a></li>
+                   <% }) %>
+                 
+     
+                 </ul>
+               </div>
+     
+            
+   
+     
+     
+             </div>
+             <% }) %>
+
+
+           </li>
+
+           <% }) %>
+
+
+
+         </ul>
+         <!-- loop brands  -->
+
+
+  
+     </div>
+     </div>
+
+  </div>
+       
+         <div class="col-md-9 pl-0">
+
+           <!-- slider section start  -->
+     <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+       <div class="carousel-inner">
+         <div class="carousel-item active">
+           <div class="container-fluid p-0">
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="img-box">
+                   <img src="/images/slider1.jpg" alt="">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="carousel-item">
+           <div class="container-fluid p-0">
+             <div class="row">
+               <div class="col-md-12">
+                 <div class="img-box">
+                   <img src="/images/slider2.jpg" alt="">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+        
+         <div class="carousel-item">
+           <div class="container-fluid p-0">
+             <div class="row">
+              
+               <div class="col-md-12">
+                 <div class="img-box">
+                   <img src="/images/slider3.jpg" alt="">
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+        
+       </div>
+       <!-- <div class="carousel_btn_box">
+         <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+           <i class="fa fa-angle-left" aria-hidden="true"></i>
+           <span class="sr-only">Previous</span>
+         </a>
+         <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+           <i class="fa fa-angle-right" aria-hidden="true"></i>
+           <span class="sr-only">Next</span>
+         </a>
+       </div> -->
+     </div>
+
+      <!-- slider section end  -->
+
+
+           <!-- product section start ........................ -->
+           <div class="row p-3 home_product">
+             <% latest_product.forEach((data)=>{  %>
+             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+               <div class="card product-item border-0 mb-4">
+                 <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                   <img class="img-fluid w-100" src="/uploads/<%= data.image %>" alt="">
+                 </div>
+                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                   <h6 class="text-truncate">
+                     <%= data.name%>
+                   </h6>
+                   
+                 </div>
+                 <div class="card-footer d-flex justify-content-between bg-light border">
+                   <a href="/product-detail/<%= data._id %>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                   <a href="" class="btn btn-sm text-dark p-0">$ <%= data.price %> .00</a>
+                 </div>
+               </div>
+             </div>
+             <% }) %>
+           </div>
+           
+           <!-- product section end ........................ -->
+
+
+   </div>
+
+
+
+   </div>
+ </div>
+   </section>
     

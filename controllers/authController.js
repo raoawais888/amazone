@@ -9,15 +9,7 @@ const transporter = require("../config/emailSend.js");
 
 class authController {
 
-  static register = async (req, res) => {
-    
-    try {
-      const category = await categoryModel.find();
-      await res.render("frontend/pages/register",{category});
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
+  
   
   static store = async (req, res) => {
     try {
@@ -285,14 +277,7 @@ class authController {
     }
   };
 
-  static login = async (req, res) => {
-    try {
-      const category = await categoryModel.find();
-      await res.render("frontend/pages/login",{category, captcha: res.recaptcha });
-    } catch (error) {
-      console.log("Error", error);
-    }
-  };
+  
 
 
   static auth =  async (req, res , next) => {

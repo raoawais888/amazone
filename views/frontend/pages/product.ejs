@@ -10,89 +10,31 @@
     </div>
 
 
-    <section id="breadcrumb">
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Products</h2>
+    <!-- new section add start -->
+    <div class="container mt-3 product_page content_scroll">
+      <div class="row">
+        <div class="col-md-12 text-secondary p-0">
+          <div class="title-wrapper mb-0 text-center">
+            <h3> ALL Products </h3>
           </div>
         </div>
       </div>
+    </div>
 
-    </section>
-    <!-- product section -->
-
-    <!-- new section add start -->
-    <div class="container-fluid pt-5">
-      <div class="row px-xl-5">
-        <!-- Shop Sidebar Start -->
-        <div class="col-lg-2 col-md-12">
-          <!-- Price Start -->
-          <div class="border-bottom mb-4 pb-4">
-            <h5 class="font-weight-semi-bold mb-4">All Brands</h5>
-
-            <div class="cat-box">
-                 
-
-                <!-- loop brands  -->
-                <ul class=" category">
-
-                  <% data.forEach((brand,index) =>{ %>
-                  <li class="cat-p ">
-                    <div><a href="#"><%=  brand.brand.name  %></a></div>
-
-                    <% brand.brand.category.forEach((category , i) =>{ %>
-                    <div class="tecihone">
-                     
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="#"><%= category.name %></a><span class="category-num">( <a href="#">2</a> )</span></div>
-                        
-                           <% category.model.forEach((model , i)=>{ %>
-                          <li><a href="#"><%= model.name %></a></li>
-                          <% }) %>
-                        
-            
-                        </ul>
-                      </div>
-            
-                   
-          
-            
-            
-                    </div>
-                    <% }) %>
-
-
-                  </li>
-
-                  <% }) %>
-
-
-
-                </ul>
-                <!-- loop brands  -->
-
-
-         
-            </div>
-            </div>
-            </div>
-            <!-- Price End -->
-
-    
-        <!-- Shop Sidebar End -->
+    <div class="container pt-5">
+      <div class="row">
+       
        
 
         <!-- Shop Product Start -->
-        <div class="col-lg-10 col-md-12">
+        <div class="col-lg-12 col-md-12">
           <div class="row pb-3">
-            <div class="col-12 pb-1">
+            <div class="col-12 pb-1 pl-0 pr-0">
               <div class="d-flex align-items-center justify-content-between mb-4">
-                <form action="">
+                <form action="" class="search_from">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by name">
+                    <input type="text" class="form-control" placeholder="Search by name" id="search_product">
                     <div class="input-group-append">
                       <span class="input-group-text bg-transparent text-primary">
                         <i class="fa fa-search"></i>
@@ -100,8 +42,8 @@
                     </div>
                   </div>
                 </form>
-                <div class="dropdown ml-4">
-                  <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown"
+                <div class="dropdown ml-4 w-25">
+                  <button class="btn border dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Sort by
                   </button>
@@ -115,39 +57,37 @@
             </div>
 
 
+            <div class="row w-100" id="product_append">
+
             <% product.forEach(data=> { %>
 
 
               <!-- loop section nd -->
 
 
-              <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+              <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4">
                   <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" src="uploads/<%= data.image%>" alt="">
+                    <img class="img-fluid w-100" src="/uploads/<%= data.image%>" alt="">
                   </div>
                   <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                     <h6 class="text-truncate mb-3">
                       <%= data.name %>t
                     </h6>
-                    <div class="d-flex justify-content-center">
-                      <h6>$ <%= data.price %>
-                      </h6>
-                      <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                    </div>
+                    
                   </div>
                   <div class="card-footer d-flex justify-content-between bg-light border">
                     <a href="/product-detail/<%= data._id %>" class="btn btn-sm text-dark p-0"><i
                         class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i
-                        class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                    <a href="" class="btn btn-sm text-dark p-0">  $ <%= data.price %></a>
                   </div>
                 </div>
               </div>
 
               <% }) %>
+            </div>
 
-                <div class="col-12 pb-1">
+                <!-- <div class="col-12 pb-1">
                   <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center mb-3">
                       <li class="page-item disabled">
@@ -167,7 +107,7 @@
                       </li>
                     </ul>
                   </nav>
-                </div>
+                </div> -->
           </div>
         </div>
         <!-- Shop Product End -->
@@ -212,4 +152,101 @@
 		});
 
   })
+
+
+    // search filter 
+
+    // $("#search_product").on("keyup",function(){
+         
+    //   let search = $(this).val();
+       
+      
+
+
+    // })
+
+
+    // Define a debounce function
+function debounce(func, delay) {
+  let timeoutId;
+  
+  return function() {
+    const context = this;
+    const args = arguments;
+    
+    clearTimeout(timeoutId);
+    
+    timeoutId = setTimeout(function() {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+// Function to be executed when the user stops typing (e.g., search)
+function performSearch() {
+  // Add your search logic here
+  const searchTerm = document.getElementById('search_product').value;
+     let search = {
+      search:searchTerm
+     }
+         $.ajax({
+           url:"/search_product",
+           type:"POST",
+           data: JSON.stringify(search),
+              contentType: "application/json; charset=utf-8",
+              traditional: true,
+           success:function(data){
+            let html = ``;
+              if(data.data.length > 0){
+
+                  data.data.forEach((product)=>{
+
+                    html+=` <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                <div class="card product-item border-0 mb-4">
+                  <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <img class="img-fluid w-100" src="/uploads/${product.image}" alt="">
+                  </div>
+                  <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                    <h6 class="text-truncate mb-3">
+                      ${product.name}
+                    </h6>
+                    
+                  </div>
+                  <div class="card-footer d-flex justify-content-between bg-light border">
+                    <a href="/product-detail/${product._id}" class="btn btn-sm text-dark p-0"><i
+                        class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                    <a href="" class="btn btn-sm text-dark p-0">  $ ${product.price} </a>
+                  </div>
+                </div>
+              </div>`;
+
+                  })
+                  
+                     $("#product_append").html(html);
+                       
+              }else{
+                $("#product_append").html("<h2>Search Product Not Match</h2>");
+
+              }
+           }
+
+         })
+
+
+}
+
+// Get a reference to the search input element
+const searchInput = document.getElementById('search_product');
+
+// Create a debounced version of the performSearch function
+const debouncedSearch = debounce(performSearch, 300); // 300 milliseconds delay
+
+// Add an event listener to the search input
+searchInput.addEventListener('keyup', debouncedSearch);
+
+
+
+
+
+
     </script>

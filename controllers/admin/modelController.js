@@ -9,7 +9,8 @@ class modelController {
     static allModel = async (req,res) => {
         try {
                 const models= await mobileModel.find({}).populate('category').populate('brand');
-               
+                
+                // console.log(models);
                 
                 res.render("backend/pages/models/models",{models});
         } catch (error) {
@@ -39,6 +40,28 @@ class modelController {
                  
                    const categories = await categoryModel.find({brand:brand});
                      
+                   if(categories){
+                   
+                        res.json({
+                            msg:"fetch",
+                           data:categories,
+                        })
+                      
+                   }
+
+                
+            } catch (error) {
+                console.log(error);
+            }
+     
+    }
+
+     static modelFetch = async (req,res)=>{
+
+            try {
+                const {brand} = req.body;
+                 console.log(brand);
+                   const categories = await mobileModel.find({category:brand});
                    if(categories){
                    
                         res.json({

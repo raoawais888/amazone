@@ -42,6 +42,7 @@ router.get("/edit-model/:id",modelController.editModel);
 router.post("/edit-model/:id", modelController.updateModel);
 router.get("/delete-model/:id", modelController.deleteModel);
 router.post("/category-fetch", modelController.categoryFetch);
+router.post("/model-fetch", modelController.modelFetch);
 
 
 
