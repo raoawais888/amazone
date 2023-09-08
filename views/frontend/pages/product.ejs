@@ -1,3 +1,6 @@
+
+
+
 <body class="sub_page">
 
 
@@ -24,7 +27,7 @@
     <div class="container-fluid pt-5">
       <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
-        <div class="col-lg-3 col-md-12">
+        <div class="col-lg-2 col-md-12">
           <!-- Price Start -->
           <div class="border-bottom mb-4 pb-4">
             <h5 class="font-weight-semi-bold mb-4">All Brands</h5>
@@ -33,123 +36,57 @@
                  
 
                 <!-- loop brands  -->
-                <ul class="cat-p cat-p-hover category">
-                  <li>
-                    <div><a href="https://www.etradesupply.com/apple.html">Apple</a></div>
+                <ul class=" category">
+
+                  <% data.forEach((brand,index) =>{ %>
+                  <li class="cat-p ">
+                    <div><a href="#"><%=  brand.brand.name  %></a></div>
+
+                    <% brand.brand.category.forEach((category , i) =>{ %>
                     <div class="tecihone">
-                      <div class="cateyory_more"><a href="https://www.etradesupply.com/apple.html"></a></div>
+                     
                       <div class="juery">
                         <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/iphone.html">Apple iPhone</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/iphone.html">41</a> )</span></div>
-            
-                          <li><a href="https://www.etradesupply.com/apple/iphone/apple-iphone-series.html">Grade R Series LCD Screen</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-14.html">Apple iPhone 14</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-14-plus.html">Apple iPhone 14 Plus</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-14-pro.html">Apple iPhone 14 Pro</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-14-pro-max.html">Apple iPhone 14 Pro Max</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-13-pro-max.html">Apple iphone 13 Pro Max</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-13-pro.html">Apple iphone 13 Pro</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-13.html">Apple iphone 13</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-13-mini.html">Apple iphone 13 Mini</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-12.html">Apple iphone 12</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/iphone/appe-iphone-12-por.html">Apple iPhone 12 Pro</a></li>
+                          <div class="will2px"><a href="#"><%= category.name %></a><span class="category-num">( <a href="#">2</a> )</span></div>
+                        
+                           <% category.model.forEach((model , i)=>{ %>
+                          <li><a href="#"><%= model.name %></a></li>
+                          <% }) %>
+                        
             
                         </ul>
                       </div>
             
-            
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/ipad.html">iPad</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/ipad.html">24</a> )</span></div>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-pro-replacement.html">Apple iPad Pro 12.9</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-8-10-2-2020-replacement.html">Apple iPad 8 (10.2) (2020)</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-pro-9-7.html">Apple iPad Pro 9.7 2016</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-air-2.html">Apple iPad Air 2</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-air.html">Apple iPad Air</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-4.html">Apple iPad 4</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-the-new-ipad-ipad-3.html">Apple iPad 3</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-2.html">Apple iPad 2</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad.html">Apple iPad</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-mini-4.html">Apple iPad Mini 4</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipad/apple-ipad-mini-3.html">Apple iPad Mini 3</a></li>
-            
-                        </ul>
-                      </div>
-            
-            
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/ipod.html">iPod</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/ipod.html">18</a> )</span></div>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch-gen-6.html">Apple iPod Touch Gen 6</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch-gen-5.html">Apple iPod Touch Gen 5</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch-gen-4.html">Apple iPod Touch Gen 4</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch-gen-3.html">Apple iPod Touch Gen 3</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch-gen-2.html">Apple iPod Touch Gen 2</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-touch.html">Apple iPod Touch</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-nano-gen-7.html">Apple iPod Nano Gen 7</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-nano-gen-6.html">Apple iPod Nano Gen 6</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-nano-gen-5.html">Apple iPod Nano Gen 5</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-nano-gen-4.html">Apple iPod Nano Gen 4</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/ipod/apple-ipod-nano-gen-3.html">Apple iPod Nano Gen 3</a></li>
-            
-                        </ul>
-                      </div>
-            
-            
-                      
-                      
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/apple-watch.html">Apple Watch</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/apple-watch.html">9</a> )</span></div>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-sport.html">Apple Watch Sport</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch.html">Apple Watch</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-2.html">Apple Watch 2</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-3.html">Apple Watch 3</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-4.html">Apple Watch 4</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-5.html">Apple Watch 5</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-6.html">Apple Watch 6</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-7.html">Apple Watch 7</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-watch/apple-watch-8.html">Apple Watch 8</a></li>
-                        </ul>
-                      </div>
-            
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/apple-airpods.html">Apple AirPods</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/apple-airpods.html">6</a> )</span></div>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-1-generation.html">Apple AirPods 1nd Generation</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-2nd-generation.html">Apple AirPods 2nd Generation</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-3rd-generation.html">Apple AirPods 3rd Generation</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-pro.html">Apple AirPods Pro</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-pro-2nd-generation.html">Apple AirPods Pro 2nd Generation</a></li>
-                          <li><a href="https://www.etradesupply.com/apple/apple-airpods/apple-airpods-max.html">Apple AirPods Max</a></li>
-                        </ul>
-                      </div>
-                      <div class="juery">
-                        <ul>
-                          <div class="will2px"><a href="https://www.etradesupply.com/apple/app.html">Apple MacBook</a><span class="category-num">( <a href="https://www.etradesupply.com/apple/app.html">0</a> )</span></div>
-            
-                        </ul>
-                      </div>
+                   
+          
             
             
                     </div>
+                    <% }) %>
+
+
                   </li>
+
+                  <% }) %>
+
+
+
                 </ul>
                 <!-- loop brands  -->
 
 
+         
+            </div>
+            </div>
             </div>
             <!-- Price End -->
 
-          </div>
-
-
-        </div>
+    
         <!-- Shop Sidebar End -->
-
+       
 
         <!-- Shop Product Start -->
-        <div class="col-lg-9 col-md-12">
+        <div class="col-lg-10 col-md-12">
           <div class="row pb-3">
             <div class="col-12 pb-1">
               <div class="d-flex align-items-center justify-content-between mb-4">
@@ -245,3 +182,34 @@
 
 
     <%- include("../partials/footer.ejs") %>
+
+    <script>
+      $(document).ready(function(){
+      var navtimer,navleave;
+
+      $(document).on("mouseenter",".cat-p",function(){
+        
+			clearTimeout(navleave);
+			clearTimeout(navtimer);
+			var that = this;
+			navtimer = setTimeout(function(){
+				$(".tecihone").hide();
+				$(that).find(".tecihone").show();
+				$(".cat-p").removeClass("cat-p-hover");
+				$(that).addClass("cat-p-hover");
+			},60);
+		});
+	
+	
+		$(document).on("mouseleave",".cat-p",function(){
+			clearTimeout(navtimer);
+			clearTimeout(navleave);
+			var that = this;
+			navleave = setTimeout(function(){
+				$(".tecihone").hide();
+				$(".cat-p").removeClass("cat-p-hover");
+			},30);
+		});
+
+  })
+    </script>

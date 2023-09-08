@@ -3,6 +3,7 @@ const  upload = require  ("../config/multerConfig.js");
 const adminController = require("../controllers/admin/adminController.js");
 const  categoryController = require ("../controllers/admin/categoryController.js");
 const  brandController = require ("../controllers/admin/brandController.js");
+const  modelController = require ("../controllers/admin/modelController.js");
 const  productController =  require("../controllers/admin/productController.js");
 const  orderController =  require("../controllers/admin/orderController.js");
 const  userController =  require("../controllers/admin/userController.js");
@@ -23,13 +24,24 @@ router.get("/delete-category/:id", categoryController.deleteCategory);
 
 
 
-//Category Rotes
+//Brands Rotes
 router.get("/brand", brandController.allBrand);
 router.get("/add-brand",brandController.addBrand);
 router.post("/add-brand", upload.single("categoryImg"),brandController.storeBrand);
 router.get("/edit-brand/:id",brandController.editBrand);
 router.post("/edit-brand/:id", upload.single("categoryImg"), brandController.updateBrand);
 router.get("/delete-brand/:id", brandController.deleteBrand);
+
+
+
+//Models Rotes
+router.get("/model", modelController.allModel);
+router.get("/add-model",modelController.addModel);
+router.post("/add-model",modelController.storeModel);
+router.get("/edit-model/:id",modelController.editModel);
+router.post("/edit-model/:id", modelController.updateModel);
+router.get("/delete-model/:id", modelController.deleteModel);
+router.post("/category-fetch", modelController.categoryFetch);
 
 
 

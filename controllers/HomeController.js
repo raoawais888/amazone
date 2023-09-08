@@ -3,9 +3,11 @@ const productModel = require ("../models/productModel.js");
 const orderModel = require("../models/orderModel.js");
 const categoryModel = require("../models/categoryModel");
 const commentModel = require("../models/productCommentModel.js");
+const brandModel = require("../models/brandModel.js");
 const moment  = require("moment");
 const nodemailer = require ("nodemailer");
 const { use } = require("passport");
+const mobileModel = require("../models/mobileModel.js");
 class HomeController {
   static index = async (req, res) => {
     const product = await productModel.find({verified:1});
@@ -21,11 +23,59 @@ class HomeController {
   };
 
   static product = async (req, res) => {
+    try {
+      const product = await productModel.find({ verified: 1 });
+      const category = await categoryModel.find();
+      const brands = await brandModel.find({});
+  
+      const p_data = [];
+  
+      for (const brand of brands) {
+        const brand_data = {
+          brand: {
+            name: brand.name,
+            category: [],
+          },
+        };
+         const fetchCat = await categoryModel.find({brand:brand._id});
+        
+  
+        for (const category of fetchCat) {
+          if (category.brand.toString() === brand._id.toString()) {
+            const category_data = {
+              name: category.name,
+              model: [],
+            };
+            
+              const model = await mobileModel.find({category:category._id , brand : brand._id });
+
+
+            for (const product of model) {
+              if (product.category.toString() === category._id.toString()) {
+              
+            
+                category_data.model.push(product);
+              }
+            }
+  
+            brand_data.brand.category.push(category_data);
+          }
+        }
+  
+        p_data.push(brand_data);
+      }
+             
      
-    const product = await productModel.find({verified:1});
-    const category = await categoryModel.find();
-    res.render("frontend/pages/product",{product,category});
+      res.render("frontend/pages/product",{data:p_data , category , product});
+      // Now, you can use the populated p_data as needed in your response or further processing.
+      // res.json(p_data);
+    } catch (error) {
+      console.error(error);
+      // Handle errors and send an appropriate response.
+      // res.status(500).json({ error: 'Internal Server Error' });
+    }
   };
+  
 
   static product_detail = async (req, res) => {
      const id = req.params.id;
